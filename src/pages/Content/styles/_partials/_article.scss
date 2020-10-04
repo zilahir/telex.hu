@@ -1,0 +1,44 @@
+@import '../variables';
+@import '../mixins/mediaQueries';
+
+.article_body {
+	@include xl {
+		.rate-container {
+			width: 100%;
+			margin-top: 80px;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			border: 2px solid $telex-main-color;
+
+			div {
+				padding: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				&:hover {
+					transition: all 0.2s ease-in-out;
+					background: $telex-main-color;
+					cursor: pointer;
+
+					svg {
+						g {
+							stroke: #ffffff;
+						}
+					}
+				}
+
+				svg {
+					width: 2rem;
+					height: 2rem;
+				}
+
+				&:last-of-type {
+					svg {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+	}
+}
