@@ -12,7 +12,6 @@ chrome.extension.sendMessage({}, function(response) {
 		clearInterval(readyStateCheckInterval);
     if (isRootPage(location.pathname)) {
 			selectors.map(currentSelector => {
-				console.debug(currentSelector)
 				document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 				if (currentSelector.removeOld) {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
