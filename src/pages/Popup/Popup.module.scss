@@ -1,0 +1,7 @@
+@import '../../styles/variables';
+
+.rootContainer {
+  height: $root-container-height;
+  display: flex;
+  background: rgba($color: $telex-main-color, $alpha: 1.0);
+}

@@ -1,0 +1,50 @@
+/*stylelint-disable*/
+@import "../variables";
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin smMax {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin maxWithWidthOrientation($max-width, $orientation) {
+  @media (max-width: #{$max-width}) and (orientation : #{$orientation}) {
+    @content;
+  }
+}
+
+@mixin minWithWidthOrientation($max-width, $orientation) {
+  @media (min-width: #{$max-width}) and (orientation : #{$orientation}) {
+    @content;
+  }
+}

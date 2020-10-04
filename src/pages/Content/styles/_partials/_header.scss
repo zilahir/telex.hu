@@ -1,0 +1,44 @@
+@import '../mixins/mediaQueries';
+@import '../variables';
+
+header {
+	@include xl {
+		.above-nav-new {
+			padding-top: 0;
+			padding-bottom: 0;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+
+			.aid {
+				background-image: url($donate-icon-url);
+				background-position: 50% 50%;
+				background-size: 25px;
+				background-repeat: no-repeat;
+
+				a {
+					margin-right: 0;
+					background: no-repeat;
+					font-size: 0px;
+
+					&:hover {
+						background: unset;
+						color: unset;
+					}
+				}
+			}
+
+			.logo {
+				img {
+					transform: unset;
+					max-width: 80px;
+					object-fit: contain;
+				}
+			}
+
+			.social-list-wrapper {
+				align-self: center;
+			}
+		}
+	}
+}
