@@ -1,4 +1,21 @@
+const { isRootPage } = require("./modules/location");
 const { printLine } = require("./modules/print");
+const { addRateContainer } = require("./modules/rate");
 
-printLine('this is a just a demo')
+/* chrome.extension.sendMessage({}, function(response) {
+	const readyStateCheckInterval = setInterval(function() {
+	if (document.readyState === "complete") {
+		clearInterval(readyStateCheckInterval);
+    if (!isRootPage(location.pathname)) {
+			fixHeader()
+			addRateContainer()
+		}
+	}
+	}, 10);
+});*/
 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.isArticle) {
+    addRateContainer()
+  }
+})

@@ -1,5 +1,5 @@
 {
-  "name": "telex.hu",
+  "name": "www.telex.hu",
   "options_page": "options.html",
   "background": {
     "scripts": [
@@ -12,7 +12,7 @@
     "default_icon": "icon-34.png"
   },
   "permissions": [
-    "https://telex.hu/", "https://telex.hu/*", "tabs", "webNavigation"
+    "https://www.telex.hu/", "https://www.telex.hu/*", "tabs", "webNavigation", "history"
   ],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
@@ -22,16 +22,13 @@
   },
   "content_scripts": [{
     "matches": [
-      "https://telex.hu/",
-      "https://telex.hu/*",
-      "<all_urls>"
+      "https://www.telex.hu/*"
     ],
     "js": [
       "contentScript.bundle.js",
       "contentScriptSubPage.bundle.js"
     ],
     "css": ["content.styles.css"]
-
   }],
   "web_accessible_resources": [
     "content.styles.css",
