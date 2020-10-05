@@ -18,7 +18,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.isArticle) {
 		addRateContainer()
 		const allImages = document.querySelectorAll('.article_body figure')
-		console.debug('allImages', allImages)
 		const roomGallery = document.createElement('div')
 		roomGallery.setAttribute('class', 'gallery')
 		const imagePreviewContainer = document.createElement('div')
@@ -26,13 +25,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 		const imageHighlight = document.createElement('img')
 		imageHighlight.setAttribute('class', 'gallery-hightlight')
 		Array.from(allImages).map((currentImage, index) => {
-			console.debug('index', index)
 			imagePreviewContainer.append(currentImage.querySelector('img'))
 			if (index === 0) {
 				imageHighlight.setAttribute('src', currentImage.getAttribute('src'))
 				roomGallery.append(imageHighlight)
 			}
-			console.debug('image')
 			currentImage.remove()
 		})
 		roomGallery.append(imagePreviewContainer)
