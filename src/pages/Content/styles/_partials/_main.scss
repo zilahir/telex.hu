@@ -1,4 +1,5 @@
 @import '../mixins/mediaQueries';
+@import '../mixins/articleTag';
 @import '../variables';
 
 .container-new {
@@ -9,9 +10,7 @@
 		.right-content-new {
 			.article {
 				.article_cat {
-					background: rgba($color: $telex-main-color, $alpha: 1.0);
-					color: #ffffff;
-					padding: 10px 14px;
+					@include articleTag();
 					border-top-right-radius: 10px;
 				}
 			}
@@ -20,6 +19,7 @@
 		.right-content-new {
 			.article {
 				.article_cat {
+					@include articleTag();
 					border-bottom-left-radius: 10px;
 				}
 			}
@@ -64,6 +64,18 @@
 
 			.article_desc {
 				font-size: 18px;
+			}
+		}
+
+		.articles-row-new {
+			grid-template-columns: repeat(4, 350px);
+			justify-content: space-between;
+
+			.article {
+				.article_cat {
+					@include articleTag();
+					border-top-right-radius: 10px;
+				}
 			}
 		}
 	}

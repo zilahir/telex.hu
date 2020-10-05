@@ -1,0 +1,7 @@
+@import '../variables';
+
+@mixin articleTag() {
+	background: rgba($color: $telex-main-color, $alpha: 1.0);
+	color: #ffffff;
+	padding: 10px 14px;
+}
