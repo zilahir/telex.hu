@@ -1,16 +1,19 @@
 import { subPageSelectors } from './consts'
 
-const { addRateContainer } = require("./modules/rate");
+const { addRateContainer } = require('./modules/rate')
 
+/**
+ * @param image
+ */
 function handleImageClick(image) {
 	const thisImageUrl = image.target.getAttribute('src')
 	const hightLightImage = document.querySelector('.gallery-hightlight')
 	hightLightImage.setAttribute('src', thisImageUrl)
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(message => {
 	if (message.isArticle) {
-		const readyStateCheckInterval = setInterval(function() {
+		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
 				subPageSelectors.forEach(currentSelector => {
@@ -34,8 +37,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				galleyTitle.innerHTML = 'Galéria'
 
 				if (allImages.length >= 3) {
-					Array.from(allImages).forEach((currentImage, index) => {
-						console.debug('currentImage', currentImage)
+					[...allImages].forEach(currentImage => {
 						imagePreviewContainer.append(currentImage.querySelector('img'))
 						currentImage.remove()
 					})
@@ -48,7 +50,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 					galleryRoot.prepend(galleyTitle)
 					articleContainer.append(galleryRoot)
 				}
-				
 			}
 		}, 10)
 	}
