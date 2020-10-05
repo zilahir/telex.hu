@@ -1,5 +1,6 @@
 @import '../variables';
 @import '../mixins/mediaQueries';
+@import '../mixins/heading';
 
 .article_body {
 	@include xl {
@@ -7,39 +8,51 @@
 			@import './gallery';
 		}
 
-		.rate-container {
-			width: 100%;
+		.rate-outer {
 			margin-top: 80px;
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			border: 2px solid $telex-main-color;
 
-			div {
-				padding: 10px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			h1 {
+				@include heading;
+				margin-bottom: 0;
+			}
 
-				&:hover {
-					transition: all 0.2s ease-in-out;
-					background: $telex-main-color;
-					cursor: pointer;
+			p {
+				margin-bottom: 30px;
+			}
 
-					svg {
-						g {
-							stroke: #ffffff;
+			.rate-container {
+				width: 100%;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				border: 2px solid $telex-main-color;
+
+				div {
+					padding: 10px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					&:hover {
+						transition: all 0.2s ease-in-out;
+						background: $telex-main-color;
+						cursor: pointer;
+
+						svg {
+							g {
+								stroke: #ffffff;
+							}
 						}
 					}
-				}
 
-				svg {
-					width: 2rem;
-					height: 2rem;
-				}
-
-				&:last-of-type {
 					svg {
-						transform: rotate(180deg);
+						width: 2rem;
+						height: 2rem;
+					}
+
+					&:last-of-type {
+						svg {
+							transform: rotate(180deg);
+						}
 					}
 				}
 			}

@@ -24,6 +24,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				const firstImage = allImages[0]
 				const firstImageUrl = firstImage.querySelector('img').getAttribute('src')
 				imageHighlight.setAttribute('src', firstImageUrl)
+				const galleyTitle = document.createElement('h1')
+				galleyTitle.innerHTML = 'Galéria'
 
 				if (allImages.length >= 3) {
 					const hasPreview = false
@@ -38,6 +40,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 					galleryRoot.append(imagePreviewContainer)
 					const articleContainer = document.querySelector('.article-html-content')
 					galleryRoot.prepend(imageHighlight)
+					galleryRoot.prepend(galleyTitle)
 					articleContainer.append(galleryRoot)
 				}
 				
