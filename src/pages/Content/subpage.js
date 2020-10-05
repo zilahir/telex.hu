@@ -1,3 +1,7 @@
+import Fingerprint2 from 'fingerprintjs2'
+
+import { cloudFnPost } from '../../requests'
+import { apiEndpoints } from '../../requests/apiEndpoints'
 import { subPageSelectors } from './consts'
 
 const { addRateContainer } = require('./modules/rate')
@@ -16,6 +20,13 @@ chrome.runtime.onMessage.addListener(message => {
 		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
+				cloudFnPost(apiEndpoints.sendArticleAnalytics, {
+					articleId: 1098,
+					visits: 1,
+					fingerPrint: 'some other fingerprint',
+				})
+
+				// const fingerPrint = Fingerprint2.get()
 				subPageSelectors.forEach(currentSelector => {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 					if (currentSelector.removeOld) {

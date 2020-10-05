@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const cloudFnRequest = (method, path, parameters, data) => Promise.resolve({
-	baseURL: `${process.env.API_URL}/${path}`,
+	baseURL: path,
 	method,
 	path,
 	data,
