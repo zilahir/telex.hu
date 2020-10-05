@@ -2,6 +2,12 @@ const { isRootPage } = require("./modules/location");
 const { printLine } = require("./modules/print");
 const { addRateContainer } = require("./modules/rate");
 
+function handleImageClick(image) {
+	const thisImageUrl = image.target.getAttribute('src')
+	const hightLightImage = document.querySelector('.gallery-hightlight')
+	hightLightImage.setAttribute('src', thisImageUrl)
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.isArticle) {
 		const readyStateCheckInterval = setInterval(function() {
@@ -26,11 +32,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 						imagePreviewContainer.append(currentImage.querySelector('img'))
 						currentImage.remove()
 					})
+					imagePreviewContainer.addEventListener('click', image => {
+						handleImageClick(image)
+					})
 					galleryRoot.append(imagePreviewContainer)
 					const articleContainer = document.querySelector('.article-html-content')
 					galleryRoot.prepend(imageHighlight)
 					articleContainer.append(galleryRoot)
 				}
+				
 			}
 		}, 10)
 	}
