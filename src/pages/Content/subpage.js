@@ -2,18 +2,6 @@ const { isRootPage } = require("./modules/location");
 const { printLine } = require("./modules/print");
 const { addRateContainer } = require("./modules/rate");
 
-/* chrome.extension.sendMessage({}, function(response) {
-	const readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
-    if (!isRootPage(location.pathname)) {
-			fixHeader()
-			addRateContainer()
-		}
-	}
-	}, 10);
-});*/
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.isArticle) {
 		const readyStateCheckInterval = setInterval(function() {
@@ -22,12 +10,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				addRateContainer()
 				const allImages = document.querySelectorAll('.article_body figure.image')
 				const galleryRoot = document.createElement('div')
-				console.debug('allImage', allImages)
 				galleryRoot.setAttribute('class', 'gallery')
 				const imagePreviewContainer = document.createElement('div')
 				imagePreviewContainer.setAttribute('class', 'image-preview')
 				const imageHighlight = document.createElement('img')
 				imageHighlight.setAttribute('class', 'gallery-hightlight')
+				const firstImage = allImages[0]
+				const firstImageUrl = firstImage.querySelector('img').getAttribute('src')
+				imageHighlight.setAttribute('src', firstImageUrl)
+
 				if (allImages.length >= 3) {
 					const hasPreview = false
 					Array.from(allImages).map((currentImage, index) => {
@@ -37,7 +28,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 					})
 					galleryRoot.append(imagePreviewContainer)
 					const articleContainer = document.querySelector('.article-html-content')
-					articleContainer.prepend(galleryRoot)
+					galleryRoot.prepend(imageHighlight)
+					articleContainer.append(galleryRoot)
 				}
 			}
 		}, 10)

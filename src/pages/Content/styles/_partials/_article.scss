@@ -3,6 +3,10 @@
 
 .article_body {
 	@include xl {
+		.article-html-content {
+			@import './gallery';
+		}
+
 		.rate-container {
 			width: 100%;
 			margin-top: 80px;

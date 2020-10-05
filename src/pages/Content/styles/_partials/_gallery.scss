@@ -1,8 +1,7 @@
 @import '../variables';
-@import '../mixins/mediaQueries';
 
 .gallery {
-	width: 50%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -11,22 +10,29 @@
 	.gallery-hightlight {
 		width: 80%;
 		height: 50%;
+	}
 
-		.image-preview {
-			display: flex;
-			width: 80%;
-			border: 2px solid #d3baa0;
+	.image-preview {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		width: 80%;
+		background: rgba($color: $telex-main-color, $alpha: 1.0);
 
-			img {
-				flex-grow: 1;
-				height: 100px;
-				opacity: 0.5;
-				transition: opacity 0.4s ease;
-				cursor: pointer;
+		img {
+			opacity: 0.95;
+			transition: all 0.4s ease;
+			cursor: pointer;
+			padding: 10px;
+			filter: grayscale(100%);
 
-				&.opactiy {
-					opacity: 1;
-				}
+			&:hover {
+				opacity: 1;
+				filter: grayscale(0%);
+			}
+
+			&.opactiy {
+				opacity: 1;
+				filter: grayscale(0%);
 			}
 		}
 	}
