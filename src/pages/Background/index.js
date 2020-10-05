@@ -7,5 +7,6 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
     chrome.tabs.sendMessage(details.tabId, {
       isArticle: true,
     })
+    console.debug('sending message')
   }
 });

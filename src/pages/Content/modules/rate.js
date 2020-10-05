@@ -2,6 +2,7 @@
 
 export function addRateContainer() {
   const articleRootContainer = document.querySelector('.article_body')
+  console.debug('articleRootContainer', articleRootContainer)
   const container = document.createElement('div')
   container.setAttribute('class', 'rate-container')
   const leftContainer = document.createElement('div')
