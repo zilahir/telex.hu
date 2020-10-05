@@ -17,5 +17,7 @@ const { addRateContainer } = require("./modules/rate");
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.isArticle) {
     addRateContainer()
+    const allImages = document.querySelectorAll('.article_body figure img')
+    console.debug('allImages', allImages)
   }
 })
