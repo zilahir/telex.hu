@@ -1,7 +1,6 @@
-const { isRootPage } = require("./modules/location");
-const { printLine } = require("./modules/print");
-const { addRateContainer } = require("./modules/rate");
 import { subPageSelectors } from './consts'
+
+const { addRateContainer } = require("./modules/rate");
 
 function handleImageClick(image) {
 	const thisImageUrl = image.target.getAttribute('src')
@@ -35,8 +34,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				galleyTitle.innerHTML = 'Galéria'
 
 				if (allImages.length >= 3) {
-					const hasPreview = false
-					Array.from(allImages).map((currentImage, index) => {
+					Array.from(allImages).forEach((currentImage, index) => {
 						console.debug('currentImage', currentImage)
 						imagePreviewContainer.append(currentImage.querySelector('img'))
 						currentImage.remove()

@@ -1,12 +1,9 @@
-import { addRateContainer } from "./rate"
-
 export function copyArticlesIntoGrid(order) {
 	const gridArticleListContainer = document.querySelector('.articles-row-new')
 	let article = document.querySelectorAll('.articles-block-new .main-block .article-list')[order]
 	article = article.querySelector('li')
 	const originalAnchorUrl = article.querySelector('a')
 	const originalImageUrl = article.querySelector('img').getAttribute('src')
-	const originalArticleDesc = article.querySelector('.article_title').innerHTML
 	const originalArticleCategory = article.querySelector('.article_cat').innerHTML
 	const newArticle = document.createElement('div')
 	const newArticleWrapper = document.createElement('div')
