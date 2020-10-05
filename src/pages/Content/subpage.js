@@ -1,20 +1,22 @@
-const { isRootPage } = require("./modules/location");
-const { printLine } = require("./modules/print");
-const { addRateContainer } = require("./modules/rate");
 import { subPageSelectors } from './consts'
 
+const { addRateContainer } = require('./modules/rate')
+
+/**
+ * @param image
+ */
 function handleImageClick(image) {
 	const thisImageUrl = image.target.getAttribute('src')
 	const hightLightImage = document.querySelector('.gallery-hightlight')
 	hightLightImage.setAttribute('src', thisImageUrl)
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(message => {
 	if (message.isArticle) {
-		const readyStateCheckInterval = setInterval(function() {
+		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
-				subPageSelectors.map(currentSelector => {
+				subPageSelectors.forEach(currentSelector => {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 					if (currentSelector.removeOld) {
 						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
@@ -35,9 +37,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				galleyTitle.innerHTML = 'Galéria'
 
 				if (allImages.length >= 3) {
-					const hasPreview = false
-					Array.from(allImages).map((currentImage, index) => {
-						console.debug('currentImage', currentImage)
+					[...allImages].forEach(currentImage => {
 						imagePreviewContainer.append(currentImage.querySelector('img'))
 						currentImage.remove()
 					})
@@ -50,7 +50,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 					galleryRoot.prepend(galleyTitle)
 					articleContainer.append(galleryRoot)
 				}
-				
 			}
 		}, 10)
 	}
