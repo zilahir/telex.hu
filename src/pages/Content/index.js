@@ -21,6 +21,11 @@ chrome.extension.sendMessage({}, () => {
 				new Array(2).fill().forEach((_, index) => {
 					copyArticlesIntoGrid(index)
 				})
+				const articlesAside = document.querySelector('.articles-block aside')
+				const articleAsideArticles = articlesAside.querySelector('ul')
+
+				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
+				articlesAside.remove()
 			}
 		}
 	}, 10)

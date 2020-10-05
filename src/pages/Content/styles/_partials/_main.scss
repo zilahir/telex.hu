@@ -79,4 +79,14 @@
 			}
 		}
 	}
+
+	.articles-block-new {
+		grid-template-columns: unset;
+
+		.main-block {
+			div {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+	}
 }
