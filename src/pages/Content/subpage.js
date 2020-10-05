@@ -1,6 +1,7 @@
 const { isRootPage } = require("./modules/location");
 const { printLine } = require("./modules/print");
 const { addRateContainer } = require("./modules/rate");
+import { subPageSelectors } from './consts'
 
 function handleImageClick(image) {
 	const thisImageUrl = image.target.getAttribute('src')
@@ -13,6 +14,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 		const readyStateCheckInterval = setInterval(function() {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
+				subPageSelectors.map(currentSelector => {
+					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+					if (currentSelector.removeOld) {
+						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
+					}
+				})
 				addRateContainer()
 				const allImages = document.querySelectorAll('.article_body figure.image')
 				const galleryRoot = document.createElement('div')

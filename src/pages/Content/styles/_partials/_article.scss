@@ -2,6 +2,28 @@
 @import '../mixins/mediaQueries';
 @import '../mixins/heading';
 
+.article_title-bottom-new {
+	justify-content: flex-start;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+
+	span {
+		margin-left: 10px;
+		height: 30px;
+
+		&:hover {
+			cursor: pointer;
+
+			svg {
+				path {
+					stroke: $telex-main-color;
+				}
+			}
+		}
+	}
+}
+
 .article_body {
 	@include xl {
 		.article-html-content {

@@ -7,3 +7,7 @@ export const selectors = [
 	{ tag: 'section', oldClass: 'articles-row', newClass: 'articles-row-new', removeOld: false, },
 	{ tag: 'section', oldClass: 'articles-block', newClass: 'articles-block-new', removeOld: false, },
 ]
+
+export const subPageSelectors = [
+	{ tag: 'div', oldClass: 'article_title-bottom', newClass: 'article_title-bottom-new', removeOld: true },
+]
