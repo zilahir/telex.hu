@@ -16,24 +16,30 @@ const { addRateContainer } = require("./modules/rate");
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.isArticle) {
-		addRateContainer()
-		const allImages = document.querySelectorAll('.article_body figure')
-		const roomGallery = document.createElement('div')
-		roomGallery.setAttribute('class', 'gallery')
-		const imagePreviewContainer = document.createElement('div')
-		imagePreviewContainer.setAttribute('class', 'image-preview')
-		const imageHighlight = document.createElement('img')
-		imageHighlight.setAttribute('class', 'gallery-hightlight')
-		Array.from(allImages).map((currentImage, index) => {
-			imagePreviewContainer.append(currentImage.querySelector('img'))
-			if (index === 0) {
-				imageHighlight.setAttribute('src', currentImage.getAttribute('src'))
-				roomGallery.append(imageHighlight)
+		const readyStateCheckInterval = setInterval(function() {
+			if (document.readyState === 'complete') {
+				clearInterval(readyStateCheckInterval)
+				addRateContainer()
+				const allImages = document.querySelectorAll('.article_body figure.image')
+				const galleryRoot = document.createElement('div')
+				console.debug('allImage', allImages)
+				galleryRoot.setAttribute('class', 'gallery')
+				const imagePreviewContainer = document.createElement('div')
+				imagePreviewContainer.setAttribute('class', 'image-preview')
+				const imageHighlight = document.createElement('img')
+				imageHighlight.setAttribute('class', 'gallery-hightlight')
+				if (allImages.length >= 3) {
+					const hasPreview = false
+					Array.from(allImages).map((currentImage, index) => {
+						console.debug('currentImage', currentImage)
+						imagePreviewContainer.append(currentImage.querySelector('img'))
+						currentImage.remove()
+					})
+					galleryRoot.append(imagePreviewContainer)
+					const articleContainer = document.querySelector('.article-html-content')
+					articleContainer.prepend(galleryRoot)
+				}
 			}
-			currentImage.remove()
-		})
-		roomGallery.append(imagePreviewContainer)
-		const articleContainer = document.querySelector('.article-html-content')
-		articleContainer.prepend(roomGallery)
+		}, 10)
 	}
 })

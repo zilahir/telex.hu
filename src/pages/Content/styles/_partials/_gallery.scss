@@ -1,0 +1,33 @@
+@import '../variables';
+@import '../mixins/mediaQueries';
+
+.gallery {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.gallery-hightlight {
+		width: 80%;
+		height: 50%;
+
+		.image-preview {
+			display: flex;
+			width: 80%;
+			border: 2px solid #d3baa0;
+
+			img {
+				flex-grow: 1;
+				height: 100px;
+				opacity: 0.5;
+				transition: opacity 0.4s ease;
+				cursor: pointer;
+
+				&.opactiy {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

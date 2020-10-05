@@ -5,8 +5,6 @@ import { addRateContainer } from './modules/rate'
 import { fixHeader } from './modules/header'
 import { copyArticlesIntoGrid } from './modules/article';
 
-printLine("__START__");
-
 chrome.extension.sendMessage({}, function(response) {
 	const readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
