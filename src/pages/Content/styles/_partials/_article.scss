@@ -11,16 +11,6 @@
 	span {
 		margin-left: 10px;
 		height: 30px;
-
-		&:hover {
-			cursor: pointer;
-
-			svg {
-				path {
-					stroke: $telex-main-color;
-				}
-			}
-		}
 	}
 }
 
