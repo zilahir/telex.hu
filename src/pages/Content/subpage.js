@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 		const readyStateCheckInterval = setInterval(function() {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
-				subPageSelectors.map(currentSelector => {
+				subPageSelectors.forEach(currentSelector => {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 					if (currentSelector.removeOld) {
 						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
