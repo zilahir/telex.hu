@@ -37,8 +37,8 @@ export function addRateContainer() {
 
   const thumbsUpMeta = document.createElement('span')
   const thumbsDownMeta = document.createElement('span')
-  thumbsUpMeta.innerHTML = thumbsUp
-  thumbsDownMeta.innerHTML = thumbsDown
+  thumbsUpMeta.innerHTML = `${thumbsUp}797`
+  thumbsDownMeta.innerHTML = `${thumbsDown} 18`
 
   const articleMetaContainer = document.querySelector('.article_title-bottom-new')
   articleMetaContainer.append(thumbsUpMeta)

@@ -11,7 +11,7 @@ header {
 			align-items: center;
 
 			.aid {
-				background-image: url($donate-icon-url);
+				// background-image: url($donate-icon-url);
 				background-position: 50% 50%;
 				background-size: 25px;
 				background-repeat: no-repeat;
@@ -24,6 +24,20 @@ header {
 					&:hover {
 						background: unset;
 						color: unset;
+					}
+
+					&.aid-new {
+						svg {
+							path {
+								&:first-of-type {
+									stroke: #ffffff;
+								}
+
+								&:last-of-type {
+									fill: #ffffff;
+								}
+							}
+						}
 					}
 				}
 			}
