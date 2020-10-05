@@ -44,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "eslint-plugin-unicorn": "^22.0.0",
     "file-loader": "^6.0.0",
     "fs-extra": "^9.0.0",
     "html-loader": "0.5.5",

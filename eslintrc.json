@@ -1,0 +1,14 @@
+{
+	"root": true,
+	"extends": [
+		"@zilahir/eslint-config/base",
+		"plugin:unicorn/recommended",
+		"plugin:jsdoc/recommended",
+		"plugin:jest/recommended"
+	],
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true
+  }
+}
