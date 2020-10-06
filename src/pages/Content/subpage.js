@@ -20,6 +20,9 @@ chrome.runtime.onMessage.addListener(message => {
 		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
+
+				document.querySelector('.article_title').classList.add('telex-article-title')
+				document.querySelector('.article_title').classList.remove('article_title')
 				Fingerprint2.get(components => {
 					const values = components.map(component => component.value)
 					const murmur = Fingerprint2.x64hash128(values.join(''), 31)
