@@ -6,6 +6,11 @@
 	@include xl {
 		min-width: 90%;
 
+		.article_desc {
+			color: $telex-article-description-color;
+			line-height: 1.5;
+		}
+
 		.left-content-new,
 		.right-content-new {
 			.article {
