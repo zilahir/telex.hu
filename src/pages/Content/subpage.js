@@ -20,13 +20,15 @@ chrome.runtime.onMessage.addListener(message => {
 		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
-				cloudFnPost(apiEndpoints.sendArticleAnalytics, {
-					articleId: 1098,
-					visits: 1,
-					fingerPrint: 'some other fingerprint',
+				Fingerprint2.get(components => {
+					const values = components.map(component => component.value)
+					const murmur = Fingerprint2.x64hash128(values.join(''), 31)
+					cloudFnPost(apiEndpoints.sendArticleAnalytics, {
+						articleId: 1098,
+						visits: 1,
+						fingerPrint: murmur,
+					})
 				})
-
-				// const fingerPrint = Fingerprint2.get()
 				subPageSelectors.forEach(currentSelector => {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 					if (currentSelector.removeOld) {
