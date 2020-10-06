@@ -13,7 +13,11 @@ chrome.extension.sendMessage({}, () => {
 				aid.classList.add('aid-new')
 				aid.innerHTML = bankCardIcon
 				selectors.forEach(currentSelector => {
-					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+					if (currentSelector.oldClass) {
+						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+					} else {
+						document.querySelector(`${currentSelector.tag}`).classList.add(currentSelector.newClass)
+					}
 					if (currentSelector.removeOld) {
 						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 					}
