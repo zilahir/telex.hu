@@ -3,127 +3,149 @@
 @import '../variables';
 
 .container-new {
-	@include xl {
-		min-width: 90%;
+  @include xl {
+    min-width: 90%;
 
-		.article_desc {
-			color: $telex-article-description-color;
-			line-height: 1.5;
-		}
+    .articles {
+      column-gap: 50px;
+    }
 
-		.left-content-new,
-		.right-content-new {
-			.article {
-				.article_cat {}
+    .article_desc {
+      color: $telex-article-description-color;
+      line-height: 1.5;
+      font-size: 18px;
+    }
 
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
-			}
+    .left-content-new,
+    .right-content-new {
+      .article {
+        .article_cat {
+        }
 
-		}
+        a {
+          font-size: 25px;
+          line-height: 32px;
+          color: $telex-main-color;
+        }
+      }
+    }
 
-		.right-content-new {
-			.article {
-				.article_cat {}
-			}
-		}
+    .right-content-new {
+      .article {
+        .article_cat {
+        }
+      }
+    }
 
-		.middle-content-new {
-			a {
-				font-size: 50px;
-				line-height: 60px;
-				margin-top: 20px;
-				font-weight: 700;
-			}
+    .middle-content-new {
+      a {
+        font-size: 50px;
+        line-height: 60px;
+        margin-top: 20px;
+        font-weight: 700;
+      }
 
-			.with-image {
-				&:hover {
-					transition: all 0.2s ease-in-out;
+      .with-image {
+        &:hover {
+          transition: all 0.2s ease-in-out;
 
-					&::before {
-						content: '';
-						background: transparent;
-					}
-				}
+          &::before {
+            content: '';
+            background: transparent;
+          }
+        }
 
-				position: relative;
+        position: relative;
 
-				&:before {
-					content: '';
-					position: absolute;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					background: rgba($color: $telex-main-color, $alpha: 0.2);
-				}
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba($color: $telex-main-color, $alpha: 0.2);
+        }
 
-				.article_cat {
-					font-size: 16px;
-					padding: 9px 16px;
-					background: rgba($color: $telex-main-color, $alpha: 1);
-					border-top-right-radius: 10px;
-					color: #ffffff;
-				}
-			}
+        .article_cat {
+          font-size: 16px;
+          padding: 9px 16px;
+          background: rgba($color: $telex-main-color, $alpha: 1);
+          border-top-right-radius: 10px;
+          color: #ffffff;
+        }
+      }
 
-			.article_desc {
-				font-size: 18px;
-			}
-		}
+      .article {
+        position: relative;
+        top: -10px;
+      }
+    }
 
-		.articles-row-new {
-			grid-template-columns: repeat(4, 350px);
-			justify-content: space-between;
+    .articles-row-new {
+      grid-template-columns: repeat(4, 330px);
+      justify-content: space-between;
+      column-gap: 30px;
 
-			.article {
-				.article_cat {}
+      .article {
+        .article_cat {
+        }
 
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
-			}
-		}
-	}
+        a {
+          font-size: 25px;
+          line-height: 32px;
+          color: $telex-main-color;
+        }
+      }
+    }
+  }
 
-	.articles-block-new {
-		grid-template-columns: unset;
+  .articles-block-new {
+    grid-template-columns: unset;
 
-		.main-block {
-			div {
-				grid-template-columns: repeat(3, 1fr);
+    .main-block {
+      div {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 50px;
 
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
-			}
-		}
+        a {
+          font-size: 25px;
+          line-height: 32px;
+          color: $telex-main-color;
+        }
+      }
+    }
 
-		&+.articles-block {
-			.article {
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
-			}
-		}
-	}
+    & + .articles-block {
+      column-gap: 50px;
 
-	.articles-row-wrapper-nww {
-		.article {
-			a {
-				font-size: 25px;
-				line-height: 32px;
-				color: $telex-main-color;
-			}
-		}
-	}
+      .main-block {
+        div {
+          column-gap: 50px;
+        }
+      }
+
+      .article {
+        a {
+          font-size: 25px;
+          line-height: 32px;
+          color: $telex-main-color;
+        }
+      }
+    }
+  }
+
+  .articles-row-wrapper-nww {
+    .articles-row {
+      column-gap: 50px;
+    }
+
+    .article {
+      a {
+        font-size: 25px;
+        line-height: 32px;
+        color: $telex-main-color;
+      }
+    }
+  }
 }
