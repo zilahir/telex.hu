@@ -42,6 +42,13 @@ function createRevisionBox(coordinates) {
 	revisionBox.append(actionButtonContainer)
 	revisionBox.style.left = `${coordinates.x}px`
 	revisionBox.style.top = `${coordinates.y}px`
+	cancelButton.addEventListener('click', () => {
+		revisionBox.remove()
+	})
+	approveButton.addEventListener('click', () => {
+		revisionBox.remove()
+		// todo call API here
+	})
 }
 
 /**

@@ -4,8 +4,9 @@ import styles from './Header.module.scss';
 import telexLogo from '../../assets/img/telex/logo.png';
 
 const Header = () => (
-  <div className={styles.greetingsContainer}>
+  <div className={styles.logoContainer}>
     <img src={telexLogo} alt="telex" />
+    <p>community</p>
   </div>
 );
 
