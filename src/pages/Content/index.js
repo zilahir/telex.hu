@@ -13,7 +13,11 @@ chrome.extension.sendMessage({}, () => {
 				aid.classList.add('aid-new')
 				aid.innerHTML = bankCardIcon
 				selectors.forEach(currentSelector => {
-					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+					if (currentSelector.oldClass) {
+						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+					} else {
+						document.querySelector(`${currentSelector.tag}`).classList.add(currentSelector.newClass)
+					}
 					if (currentSelector.removeOld) {
 						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 					}
@@ -21,6 +25,11 @@ chrome.extension.sendMessage({}, () => {
 				new Array(2).fill().forEach((_, index) => {
 					copyArticlesIntoGrid(index)
 				})
+				const articlesAside = document.querySelector('.articles-block aside')
+				const articleAsideArticles = articlesAside.querySelector('ul')
+
+				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
+				articlesAside.remove()
 			}
 		}
 	}, 10)

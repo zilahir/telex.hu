@@ -6,6 +6,8 @@ export const selectors = [
 	{ tag: 'div', oldClass: 'right-content', newClass: 'right-content-new', removeOld: false },
 	{ tag: 'section', oldClass: 'articles-row', newClass: 'articles-row-new', removeOld: false },
 	{ tag: 'section', oldClass: 'articles-block', newClass: 'articles-block-new', removeOld: false },
+	{ tag: 'div', oldClass: 'articles-row-wrapper', newClass: 'articles-row-wrapper-nww', removeOld: false },
+	{ tag: 'footer', oldClass: undefined, newClass: 'footer-new', remvoeOld: false },
 ]
 
 export const subPageSelectors = [

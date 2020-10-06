@@ -1,5 +1,6 @@
-// tiny wrapper with default env vars
+/* eslint-disable unicorn/prevent-abbreviations */
 module.exports = {
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  PORT: process.env.PORT || 3333,
-};
+	NODE_ENV: process.env.NODE_ENV || 'development',
+	PORT: process.env.PORT || 3333,
+	API_URL: 'http://localhost:5000',
+}

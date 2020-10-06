@@ -27,10 +27,42 @@
 	}
 }
 
+.cikk-content {
+	.telex-article-title {
+		font-size: 60px;
+		line-height: 75px;
+		font-weight: 600px;
+		color: $telex-article-description-color;
+		letter-spacing: -2px;
+
+		&:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+}
+
 .article_body {
 	@include xl {
 		.article-html-content {
 			@import './gallery';
+
+			div {
+				p {
+					line-height: 1.7;
+				}
+
+				blockquote {
+					line-height: 32px;
+					font-weight: 500;
+					font-size: 110%;
+					letter-spacing: 0.4px;
+				}
+
+				h1 {
+					margin: 20px 0;
+				}
+			}
 		}
 
 		.rate-outer {
