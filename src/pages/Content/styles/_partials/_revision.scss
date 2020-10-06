@@ -1,0 +1,37 @@
+.revision-box {
+  position: fixed;
+  width: 280px;
+  height: 90px;
+  border: 1px solid rgba($color: #3c4043, $alpha: 0.15);
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba($color: #ffffff, $alpha: 1);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .action-btn-container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex: 1;
+    align-items: flex-end;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid #022a53;
+    border-radius: 3px;
+    font-size: 14px;
+    height: 26px;
+  }
+
+  p {
+    font-size: 12px;
+    justify-self: flex-start;
+
+    &:last-of-type {
+      flex: 1;
+    }
+  }
+}

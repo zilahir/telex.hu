@@ -1,6 +1,7 @@
 {
   "name": "www.telex.hu",
   "options_page": "options.html",
+  "version": "0.0.1",
   "background": {
     "scripts": [
       "background.bundle.js"

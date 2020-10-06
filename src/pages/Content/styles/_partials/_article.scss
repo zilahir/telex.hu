@@ -44,6 +44,16 @@
 
 .article_body {
 	@include xl {
+		p {
+			span {
+				&.highlight {
+					background: rgba($color: #ffb2ae, $alpha: 1);
+					padding: 3px;
+					border-radius: 3px;
+				}
+			}
+		}
+
 		.article-html-content {
 			@import './gallery';
 
