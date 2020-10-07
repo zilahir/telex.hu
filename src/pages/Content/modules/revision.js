@@ -82,7 +82,9 @@ export function hightLightText() {
 	const allApprovedRevisions = store.getState().revisions.approvedRevisions
 	console.debug('allApprovedRevisions', allApprovedRevisions)
 	allParagraph.forEach((paragraph, paragraphIndex) => {
-		const hasFixedText = allApprovedRevisions.find(revision => revision.paragraphIndex === paragraphIndex)
+		const hasFixedText = allApprovedRevisions.find(
+			revision => revision.paragraphIndex === paragraphIndex,
+		)
 		if (hasFixedText) {
 			const thisParagraph = paragraph
 			console.debug('innerHTML', paragraph.innerHTML)

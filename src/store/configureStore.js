@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 
 import article from './reducers/article'
 import revisions from './reducers/reviews'
+import user from './reducers/user'
 
 const rootReducer = combineReducers({
 	article,
 	revisions,
+	user,
 })
 
 // eslint-disable-next-line no-underscore-dangle

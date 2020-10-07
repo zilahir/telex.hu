@@ -1,3 +1,5 @@
 export const SET_CURRENT_ARTICLE_ID = 'SET_CURRENT_ARTICLE_ID'
 export const TEST = 'TEST'
 export const SET_APPROVED_REVISIONS = 'SET_APPROVED_REVISIONS'
+export const AUTH_USER = 'AUTH_USER'
+export const REMOVE_USER = 'REMOVE_USER'

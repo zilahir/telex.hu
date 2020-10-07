@@ -1,6 +1,9 @@
 {
-  "singleQuote": true,
-  "trailingComma": "none",
-  "requirePragma": false,
-  "arrowParens": "avoid"
+	"singleQuote": true,
+	"trailingComma": "all",
+	"requirePragma": false,
+	"arrowParens": "avoid",
+	"useTabs": true,
+	"tabWidth": 2,
+	"semi": false
 }
