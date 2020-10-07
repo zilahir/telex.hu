@@ -27,6 +27,7 @@ function createRevisionBox({
 	x,
 	y,
 	selectedText,
+	paragraphIndex
 }) {
 	console.debug('selectedText', selectedText)
 	const revisionBox = document.createElement('div')
@@ -59,6 +60,7 @@ function createRevisionBox({
 			originalText: selectedText,
 			fixedText: 'new text',
 			userId: '5f7d0674ff34216a731967bf',
+			paragraphIndex,
 		}).then(() => {
 			revisionBox.remove()
 		})
@@ -70,7 +72,7 @@ function createRevisionBox({
  */
 export function hightLightText() {
 	const allParagraph = document.querySelectorAll('.article_body p')
-	allParagraph.forEach(paragraph => (
+	allParagraph.forEach((paragraph, paragraphIndex) => (
 		paragraph.addEventListener('mouseup', event => {
 			const thisEvent = event
 			console.debug('event', thisEvent)
@@ -80,7 +82,7 @@ export function hightLightText() {
 				const selectedTextRegexp = new RegExp(selectedText, 'g')
 				const newText = thisEvent.target.innerHTML.replace(selectedTextRegexp, `<span class="highlight">${selectedText}</span>`)
 				thisParagraph.innerHTML = newText
-				createRevisionBox({ x: thisEvent.screenX, y: thisEvent.screenY - 80, selectedText })
+				createRevisionBox({ x: thisEvent.screenX, y: thisEvent.screenY - 80, selectedText, paragraphIndex })
 			}
 		})
 	))
