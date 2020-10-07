@@ -5,6 +5,7 @@
 import { checkIcon, crossIcon } from '../../../icons'
 import { cloudFnPost } from '../../../requests'
 import { apiEndpoints } from '../../../requests/apiEndpoints'
+import { store } from '../../../store/configureStore'
 
 /**
  *
@@ -46,6 +47,7 @@ function createRevisionBox(coordinates) {
 	revisionBox.style.top = `${coordinates.y}px`
 	cancelButton.addEventListener('click', () => {
 		revisionBox.remove()
+		console.debug('store', store.getState())
 	})
 	approveButton.addEventListener('click', () => {
 		cloudFnPost(apiEndpoints.insertReview, {
@@ -62,7 +64,9 @@ function createRevisionBox(coordinates) {
 /**
  *
  */
-export function hightLightText() {
+export function hightLightText({
+	props
+}) {
 	const allParagraph = document.querySelectorAll('.article_body p')
 	allParagraph.forEach(paragraph => (
 		paragraph.addEventListener('mouseup', event => {

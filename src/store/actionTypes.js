@@ -1,0 +1,2 @@
+export const SET_CURRENT_ARTICLE_ID = 'SET_CURRENT_ARTICLE_ID'
+export const TEST = 'TEST'
