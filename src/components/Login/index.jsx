@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -27,7 +28,7 @@ const Login = () => {
 	return (
 		<div className={styles.loginContainer}>
 			<div className={styles.oneInput}>
-				<label>Felhasználói név</label>
+				<p>Felhasználói név</p>
 				<input
 					type="text"
 					className={styles.input}
@@ -35,7 +36,7 @@ const Login = () => {
 				/>
 			</div>
 			<div className={styles.oneInput}>
-				<label>Jelszó</label>
+				<p>Jelszó</p>
 				<input
 					type="password"
 					className={styles.input}

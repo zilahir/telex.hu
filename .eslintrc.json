@@ -1,27 +1,27 @@
 {
-  "root": true,
-  "globals": {
-    "chrome": "readonly"
-  },
-  "extends": [
-    "@zilahir/eslint-config/base",
-    "plugin:unicorn/recommended",
-    "plugin:jsdoc/recommended"
-  ],
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "rules": {
-    "import/prefer-default-export": 0,
-    "unicorn/consistent-function-scoping": 0,
-    "unicorn/filename-case": [
-      "error",
-      {
-        "case": "camelCase"
-      }
-    ]
-
-  }
+	"root": true,
+	"globals": {
+		"chrome": "readonly"
+	},
+	"extends": [
+		"@zilahir/eslint-config/base",
+		"@zilahir/eslint-config/react",
+		"plugin:unicorn/recommended",
+		"plugin:jsdoc/recommended"
+	],
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"rules": {
+		"import/prefer-default-export": 0,
+		"unicorn/consistent-function-scoping": 0,
+		"unicorn/filename-case": [
+			"error",
+			{
+				"case": "camelCase"
+			}
+		]
+	}
 }
