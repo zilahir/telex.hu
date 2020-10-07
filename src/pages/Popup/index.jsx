@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import { store } from '../../store/configureStore'
 
-import Popup from './Popup'
+import Popup from './popup'
 
 render(
 	<Provider store={store}>
