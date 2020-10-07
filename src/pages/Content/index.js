@@ -41,9 +41,7 @@ chrome.extension.sendMessage({}, () => {
 				cloudFnGet(`${telexApiEndpoints.getArtileData}/${thisArticleSlug}`)
 					.then(result => {
 						store.dispatch(setThisArticleId(result.data.id))
-						hightLightText({
-							thisArticleId: result.data.id,
-						})
+						hightLightText()
 					})
 			}
 		}

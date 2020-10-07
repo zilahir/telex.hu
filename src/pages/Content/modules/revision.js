@@ -23,7 +23,12 @@ function getSelectedText() {
 /**
  * @param coordinates
  */
-function createRevisionBox(coordinates) {
+function createRevisionBox({
+	x,
+	y,
+	selectedText,
+}) {
+	console.debug('selectedText', selectedText)
 	const revisionBox = document.createElement('div')
 	revisionBox.setAttribute('class', 'revision-box')
 	const revisionTextInputField = document.createElement('input')
@@ -43,16 +48,15 @@ function createRevisionBox(coordinates) {
 	actionButtonContainer.append(approveButton)
 	actionButtonContainer.append(revisionMeta)
 	revisionBox.append(actionButtonContainer)
-	revisionBox.style.left = `${coordinates.x}px`
-	revisionBox.style.top = `${coordinates.y}px`
+	revisionBox.style.left = `${x}px`
+	revisionBox.style.top = `${y}px`
 	cancelButton.addEventListener('click', () => {
 		revisionBox.remove()
-		console.debug('store', store.getState())
 	})
 	approveButton.addEventListener('click', () => {
 		cloudFnPost(apiEndpoints.insertReview, {
-			articleId: 848,
-			originalTex: 'demo',
+			articleId: store.getState().article.thisArticleId,
+			originalText: selectedText,
 			fixedText: 'new text',
 			userId: '5f7d0674ff34216a731967bf',
 		}).then(() => {
@@ -64,9 +68,7 @@ function createRevisionBox(coordinates) {
 /**
  *
  */
-export function hightLightText({
-	props
-}) {
+export function hightLightText() {
 	const allParagraph = document.querySelectorAll('.article_body p')
 	allParagraph.forEach(paragraph => (
 		paragraph.addEventListener('mouseup', event => {
@@ -78,7 +80,7 @@ export function hightLightText({
 				const selectedTextRegexp = new RegExp(selectedText, 'g')
 				const newText = thisEvent.target.innerHTML.replace(selectedTextRegexp, `<span class="highlight">${selectedText}</span>`)
 				thisParagraph.innerHTML = newText
-				createRevisionBox({ x: thisEvent.screenX, y: thisEvent.screenY - 80 })
+				createRevisionBox({ x: thisEvent.screenX, y: thisEvent.screenY - 80, selectedText })
 			}
 		})
 	))
