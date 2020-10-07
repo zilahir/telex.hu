@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
-import { thumbsDownIcon, thumbsUpIcon } from '../../../icons'
+import { revisionIcon, thumbsDownIcon, thumbsUpIcon } from '../../../icons'
+import { store } from '../../../store/configureStore'
 
 /**
  *
@@ -39,10 +40,13 @@ export function addRateContainer() {
 
 	const thumbsUpMeta = document.createElement('span')
 	const thumbsDownMeta = document.createElement('span')
+	const revisionCountMeta = document.createElement('span')
 	thumbsUpMeta.innerHTML = `${thumbsUpIcon}797`
 	thumbsDownMeta.innerHTML = `${thumbsDownIcon} 18`
+	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length}`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')
 	articleMetaContainer.append(thumbsUpMeta)
 	articleMetaContainer.append(thumbsDownMeta)
+	articleMetaContainer.append(revisionCountMeta)
 }
