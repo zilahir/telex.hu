@@ -27,9 +27,8 @@ function createRevisionBox({
 	x,
 	y,
 	selectedText,
-	paragraphIndex
+	paragraphIndex,
 }) {
-	console.debug('selectedText', selectedText)
 	const revisionBox = document.createElement('div')
 	revisionBox.setAttribute('class', 'revision-box')
 	const revisionTextInputField = document.createElement('input')
@@ -55,16 +54,24 @@ function createRevisionBox({
 		revisionBox.remove()
 	})
 	approveButton.addEventListener('click', () => {
+		const fixedText = revisionBox.querySelector('input').value
 		cloudFnPost(apiEndpoints.insertReview, {
 			articleId: store.getState().article.thisArticleId,
 			originalText: selectedText,
-			fixedText: 'new text',
+			fixedText,
 			userId: '5f7d0674ff34216a731967bf',
 			paragraphIndex,
 		}).then(() => {
 			revisionBox.remove()
 		})
 	})
+}
+
+function removeAllRevisionBox() {
+	const revisionBoxes = document.querySelectorAll('.revision-box');
+	[...revisionBoxes].forEach(revision => (
+		revision.remove()
+	))
 }
 
 /**
@@ -82,7 +89,10 @@ export function hightLightText() {
 				const selectedTextRegexp = new RegExp(selectedText, 'g')
 				const newText = thisEvent.target.innerHTML.replace(selectedTextRegexp, `<span class="highlight">${selectedText}</span>`)
 				thisParagraph.innerHTML = newText
-				createRevisionBox({ x: thisEvent.screenX, y: thisEvent.screenY - 80, selectedText, paragraphIndex })
+				removeAllRevisionBox()
+				createRevisionBox({
+					x: thisEvent.screenX, y: thisEvent.screenY - 80, selectedText, paragraphIndex,
+				})
 			}
 		})
 	))
