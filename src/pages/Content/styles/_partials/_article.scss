@@ -34,6 +34,7 @@
 		font-weight: 600px;
 		color: $telex-article-description-color;
 		letter-spacing: -2px;
+		font-weight: 600;
 
 		&:hover {
 			cursor: pointer;
@@ -44,6 +45,22 @@
 
 .article_body {
 	@include xl {
+		p {
+			span {
+				&.highlight {
+					background: rgba($color: #ffb2ae, $alpha: 1);
+					padding: 3px;
+					border-radius: 3px;
+				}
+
+				&.approved {
+					background: rgba($color: #b4ecb4, $alpha: 1);
+					padding: 3px;
+					border-radius: 3px;
+				}
+			}
+		}
+
 		.article-html-content {
 			@import './gallery';
 

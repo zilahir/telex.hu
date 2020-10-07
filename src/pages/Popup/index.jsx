@@ -1,7 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 
-import Popup from './Popup';
-import './index.css';
+import { store } from '../../store/configureStore'
 
-render(<Popup />, window.document.querySelector('#app-container'));
+import Popup from './popup'
+
+render(
+	<Provider store={store}>
+		<Popup />
+	</Provider>,
+	window.document.querySelector('#app-container'),
+)

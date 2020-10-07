@@ -1,4 +1,4 @@
-const { selectors } = require("../consts");
+const { selectors } = require('../consts')
 
 const headerSelector = selectors.find(selector => selector.oldClass === 'above-nav')
 
