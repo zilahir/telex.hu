@@ -46,6 +46,11 @@
 			padding: 8px 0;
 			transition: all 0.2s ease-in-out;
 
+			&:focus {
+				outline: none;
+				background: rgba($color: #011122, $alpha: 0.8);
+			}
+
 			&:hover {
 				cursor: pointer;
 				background: rgba($color: #011122, $alpha: 0.6);
