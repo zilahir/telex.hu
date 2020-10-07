@@ -79,10 +79,20 @@ function removeAllRevisionBox() {
  */
 export function hightLightText() {
 	const allParagraph = document.querySelectorAll('.article_body p')
-	allParagraph.forEach((paragraph, paragraphIndex) => (
+	const allApprovedRevisions = store.getState().revisions.approvedRevisions
+	console.debug('allApprovedRevisions', allApprovedRevisions)
+	allParagraph.forEach((paragraph, paragraphIndex) => {
+		const hasFixedText = allApprovedRevisions.find(revision => revision.paragraphIndex === paragraphIndex)
+		if (hasFixedText) {
+			const thisParagraph = paragraph
+			console.debug('innerHTML', paragraph.innerHTML)
+			const selectedTextRegexp = new RegExp(hasFixedText.originalText, 'g')
+			const newText = paragraph.innerHTML.replace(selectedTextRegexp, `<span class="approved">${hasFixedText.fixedText}</span>`)
+			console.debug('newText', newText)
+			thisParagraph.innerHTML = newText
+		}
 		paragraph.addEventListener('mouseup', event => {
 			const thisEvent = event
-			console.debug('event', thisEvent)
 			const thisParagraph = paragraph
 			const selectedText = getSelectedText()
 			if (selectedText.length > 4) {
@@ -95,5 +105,5 @@ export function hightLightText() {
 				})
 			}
 		})
-	))
+	})
 }

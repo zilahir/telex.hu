@@ -3,126 +3,132 @@
 @import '../mixins/heading';
 
 .article_title-bottom-new {
-	justify-content: flex-start;
-	align-items: center;
-	display: flex;
-	flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 
-	span {
-		margin-left: 10px;
-		height: 30px;
-		display: flex;
-		align-items: center;
-		font-size: 12px;
+  span {
+    margin-left: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
 
-		svg {
-			margin-right: 5px;
-		}
+    svg {
+      margin-right: 5px;
+    }
 
-		&:last-of-type {
-			svg {
-				transform: rotate(180deg);
-			}
-		}
-	}
+    &:last-of-type {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
 
 .cikk-content {
-	.telex-article-title {
-		font-size: 60px;
-		line-height: 75px;
-		font-weight: 600px;
-		color: $telex-article-description-color;
-		letter-spacing: -2px;
+  .telex-article-title {
+    font-size: 60px;
+    line-height: 75px;
+    font-weight: 600px;
+    color: $telex-article-description-color;
+    letter-spacing: -2px;
 
-		&:hover {
-			cursor: pointer;
-			text-decoration: underline;
-		}
-	}
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }
 
 .article_body {
-	@include xl {
-		p {
-			span {
-				&.highlight {
-					background: rgba($color: #ffb2ae, $alpha: 1);
-					padding: 3px;
-					border-radius: 3px;
-				}
-			}
-		}
+  @include xl {
+    p {
+      span {
+        &.highlight {
+          background: rgba($color: #ffb2ae, $alpha: 1);
+          padding: 3px;
+          border-radius: 3px;
+        }
 
-		.article-html-content {
-			@import './gallery';
+        &.approved {
+          background: rgba($color: #b4ecb4, $alpha: 1);
+          padding: 3px;
+          border-radius: 3px;
+        }
+      }
+    }
 
-			div {
-				p {
-					line-height: 1.7;
-				}
+    .article-html-content {
+      @import './gallery';
 
-				blockquote {
-					line-height: 32px;
-					font-weight: 500;
-					font-size: 110%;
-					letter-spacing: 0.4px;
-				}
+      div {
+        p {
+          line-height: 1.7;
+        }
 
-				h1 {
-					margin: 20px 0;
-				}
-			}
-		}
+        blockquote {
+          line-height: 32px;
+          font-weight: 500;
+          font-size: 110%;
+          letter-spacing: 0.4px;
+        }
 
-		.rate-outer {
-			margin-top: 80px;
+        h1 {
+          margin: 20px 0;
+        }
+      }
+    }
 
-			h1 {
-				@include heading;
-				margin-bottom: 0;
-			}
+    .rate-outer {
+      margin-top: 80px;
 
-			p {
-				margin-bottom: 30px;
-			}
+      h1 {
+        @include heading;
+        margin-bottom: 0;
+      }
 
-			.rate-container {
-				width: 100%;
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				border: 2px solid $telex-main-color;
+      p {
+        margin-bottom: 30px;
+      }
 
-				div {
-					padding: 10px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
+      .rate-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border: 2px solid $telex-main-color;
 
-					&:hover {
-						transition: all 0.2s ease-in-out;
-						background: $telex-main-color;
-						cursor: pointer;
+        div {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-						svg {
-							g {
-								stroke: #ffffff;
-							}
-						}
-					}
+          &:hover {
+            transition: all 0.2s ease-in-out;
+            background: $telex-main-color;
+            cursor: pointer;
 
-					svg {
-						width: 2rem;
-						height: 2rem;
-					}
+            svg {
+              g {
+                stroke: #ffffff;
+              }
+            }
+          }
 
-					&:last-of-type {
-						svg {
-							transform: rotate(180deg);
-						}
-					}
-				}
-			}
-		}
-	}
+          svg {
+            width: 2rem;
+            height: 2rem;
+          }
+
+          &:last-of-type {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+  }
 }

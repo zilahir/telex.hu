@@ -5,6 +5,7 @@ export const apiEndpoints = {
 	sendArticleAnalytics: `${apiRoot}/analytics`,
 	authUser: `${apiRoot}/auth`,
 	insertReview: `${apiRoot}/review`,
+	getReviews: `${apiRoot}/review`,
 }
 
 export const telexApiEndpoints = {
