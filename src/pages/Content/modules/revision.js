@@ -3,6 +3,8 @@
 // import { format } from 'date-fns'
 
 import { checkIcon, crossIcon } from '../../../icons'
+import { cloudFnPost } from '../../../requests'
+import { apiEndpoints } from '../../../requests/apiEndpoints'
 
 /**
  *
@@ -46,8 +48,14 @@ function createRevisionBox(coordinates) {
 		revisionBox.remove()
 	})
 	approveButton.addEventListener('click', () => {
-		revisionBox.remove()
-		// todo call API here
+		cloudFnPost(apiEndpoints.insertReview, {
+			articleId: 848,
+			originalTex: 'demo',
+			fixedText: 'new text',
+			userId: '5f7d0674ff34216a731967bf',
+		}).then(() => {
+			revisionBox.remove()
+		})
 	})
 }
 
