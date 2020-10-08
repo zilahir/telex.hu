@@ -42,7 +42,7 @@ export function addRateContainer() {
 	const revisionCountMeta = document.createElement('span')
 	thumbsUpMeta.innerHTML = `${thumbsUpIcon}797`
 	thumbsDownMeta.innerHTML = `${thumbsDownIcon} 18`
-	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} revisions`
+	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} felülvizsgálat`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')
 	articleMetaContainer.append(thumbsUpMeta)
