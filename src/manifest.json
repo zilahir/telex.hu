@@ -16,7 +16,8 @@
 		"tabs",
 		"webNavigation",
 		"history",
-		"storage"
+		"storage",
+		"notifications"
 	],
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"
@@ -24,13 +25,11 @@
 	"icons": {
 		"128": "icon-128.png"
 	},
-	"content_scripts": [
-		{
-			"matches": ["https://www.telex.hu/*"],
-			"js": ["contentScript.bundle.js", "contentScriptSubPage.bundle.js"],
-			"css": ["content.styles.css"]
-		}
-	],
+	"content_scripts": [{
+		"matches": ["https://www.telex.hu/*"],
+		"js": ["contentScript.bundle.js", "contentScriptSubPage.bundle.js"],
+		"css": ["content.styles.css"]
+	}],
 	"web_accessible_resources": [
 		"content.styles.css",
 		"icon-128.png",
