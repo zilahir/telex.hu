@@ -7,7 +7,7 @@ import { store } from '../../../store/configureStore'
  *
  */
 export function addRateContainer() {
-	const articleRootContainer = document.querySelector('.article_body')tContainer)
+	const articleRootContainer = document.querySelector('.article_body')
 	const container = document.createElement('div')
 	const rateOuterContainer = document.createElement('div')
 	rateOuterContainer.setAttribute('class', 'rate-outer')
