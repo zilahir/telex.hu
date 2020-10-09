@@ -3,6 +3,8 @@ import Fingerprint2 from 'fingerprintjs2'
 import { cloudFnPost } from '../../requests'
 import { apiEndpoints } from '../../requests/apiEndpoints'
 import { subPageSelectors } from './consts'
+import { setFingerprint } from '../../store/actions/fingerprint'
+import { store } from '../../store/configureStore'
 
 const { addRateContainer } = require('./modules/rate')
 
@@ -25,6 +27,7 @@ chrome.runtime.onMessage.addListener(message => {
 				Fingerprint2.get(components => {
 					const values = components.map(component => component.value)
 					const murmur = Fingerprint2.x64hash128(values.join(''), 31)
+					store.dispatch(setFingerprint(murmur))
 					cloudFnPost(apiEndpoints.sendArticleAnalytics, {
 						articleId: 1098,
 						visits: 1,
