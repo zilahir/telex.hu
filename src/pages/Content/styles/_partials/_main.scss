@@ -100,6 +100,16 @@
 	.articles-block-new {
 		grid-template-columns: unset;
 
+		aside {
+			ul {
+				a {
+					font-size: 25px;
+					line-height: 32px;
+					color: $telex-main-color;
+				}
+			}
+		}
+
 		.main-block {
 			div {
 				grid-template-columns: repeat(2, 1fr);
