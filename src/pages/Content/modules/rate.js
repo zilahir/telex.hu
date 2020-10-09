@@ -1,14 +1,25 @@
 /* eslint-disable no-console */
 
 import { revisionIcon, thumbsDownIcon, thumbsUpIcon } from '../../../icons'
-import { cloudFnPost } from '../../../requests'
+import { cloudFnGet, cloudFnPost } from '../../../requests'
 import { apiEndpoints } from '../../../requests/apiEndpoints'
 import { store } from '../../../store/configureStore'
+import { DISLIKE, LIKE } from '../consts'
 
 /**
  *
  */
 export function addRateContainer() {
+	let likeCount = 0
+	let disLikeCount = 0
+	cloudFnGet(`${apiEndpoints.getLikes}/${store.getState().article.thisArticleId}`)
+		.then(result => {
+			const temporaryResult = result.data
+			if (result.data.length > 0) {
+				likeCount = temporaryResult.filter(rate => rate.type === LIKE)
+				disLikeCount = temporaryResult.filter(rate => rate.type === DISLIKE)
+			}
+		})
 	const socialContainer = document.querySelector('.social-wrapper')
 	const articleContentWrapper = document.querySelector('.article-content-wrapper')
 	articleContentWrapper.classList.add('article-content-wrapper-new')
@@ -35,14 +46,14 @@ export function addRateContainer() {
 
 	rightContainer.addEventListener('click', () => (
 		cloudFnPost(`${apiEndpoints.insertLike}`, {
-			type: 'DISLIKE',
+			type: DISLIKE,
 			articleId: store.getState().article.thisArticleId,
 			fingerPrint: store.getState().fingerprint.fingerprint,
 		})
 	))
 	leftContainer.addEventListener('click', () => (
 		cloudFnPost(`${apiEndpoints.insertLike}`, {
-			type: 'LIKE',
+			type: LIKE,
 			articleId: store.getState().article.thisArticleId,
 			fingerPrint: store.getState().fingerprint.fingerprint,
 		})
@@ -54,8 +65,8 @@ export function addRateContainer() {
 	const thumbsUpMeta = document.createElement('span')
 	const thumbsDownMeta = document.createElement('span')
 	const revisionCountMeta = document.createElement('span')
-	thumbsUpMeta.innerHTML = `${thumbsUpIcon}797`
-	thumbsDownMeta.innerHTML = `${thumbsDownIcon} 18`
+	thumbsUpMeta.innerHTML = `${thumbsUpIcon} ${likeCount.length}`
+	thumbsDownMeta.innerHTML = `${thumbsDownIcon} ${disLikeCount.length}`
 	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} felülvizsgálat`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')

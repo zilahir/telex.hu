@@ -13,3 +13,6 @@ export const selectors = [
 export const subPageSelectors = [
 	{ tag: 'div', oldClass: 'article_title-bottom', newClass: 'article_title-bottom-new', removeOld: true },
 ]
+
+export const LIKE = 'LIKE'
+export const DISLIKE = 'DISLIKE'
