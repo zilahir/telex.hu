@@ -1,0 +1,14 @@
+.settingsRootContainer {
+	padding: 20px;
+
+	.oneItem {
+		display: flex;
+		align-items: center;
+
+		p {
+			color: #ffffff;
+			font-size: 14px;
+			margin-right: 10px;
+		}
+	}
+}
