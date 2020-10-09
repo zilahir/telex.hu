@@ -35,13 +35,14 @@ export function addRateContainer() {
 		cloudFnPost(`${apiEndpoints.insertLike}`, {
 			type: 'DISLIKE',
 			articleId: store.getState().article.thisArticleId,
-			fingerprint: store.getState().article.fingerprint.fingerprint,
+			fingerPrint: store.getState().fingerprint.fingerprint,
 		})
 	))
 	leftContainer.addEventListener('click', () => (
 		cloudFnPost(`${apiEndpoints.insertLike}`, {
 			type: 'LIKE',
 			articleId: store.getState().article.thisArticleId,
+			fingerPrint: store.getState().fingerprint.fingerprint,
 		})
 	))
 
