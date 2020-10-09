@@ -7,8 +7,9 @@ import { apiEndpoints, telexApiEndpoints } from '../../requests/apiEndpoints'
 import { store } from '../../store/configureStore'
 import { setThisArticleId } from '../../store/actions/article'
 import { setAllRevisions, setApprovedRevisions } from '../../store/actions/reviews'
+import { bankCardIcon } from '../../icons'
 
-const bankCardIcon = '<svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(2 5)"><path d="m2.5.5h12c1.1045695 0 2 .8954305 2 2v7c0 1.1045695-.8954305 2-2 2h-12c-1.1045695 0-2-.8954305-2-2v-7c0-1.1045695.8954305-2 2-2z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="m0 4h17v2h-17z" fill="#2a2e3b"/></g></svg>'
+const darkMode = false
 
 chrome.extension.sendMessage({}, () => {
 	const readyStateCheckInterval = setInterval(() => {
@@ -56,6 +57,11 @@ chrome.extension.sendMessage({}, () => {
 								store.dispatch(setAllRevisions(allRevisionData.data.revision))
 							})
 					})
+			}
+			if (darkMode) {
+				document.body.classList.add('darkmode')
+			} else {
+				document.body.classList.add('lightmode')
 			}
 		}
 	}, 10)
