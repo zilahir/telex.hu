@@ -10,7 +10,9 @@ import { store } from '../../../store/configureStore'
  */
 export function addRateContainer() {
 	const socialContainer = document.querySelector('.social-wrapper')
-
+	const articleContentWrapper = document.querySelector('.article-content-wrapper')
+	articleContentWrapper.classList.add('article-content-wrapper-new')
+	articleContentWrapper.classList.remove('article-content-wrapper')
 	const articleRootContainer = document.querySelector('.article_body')
 	const container = document.createElement('div')
 	const rateOuterContainer = document.createElement('div')

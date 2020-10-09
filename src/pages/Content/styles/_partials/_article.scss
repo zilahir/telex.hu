@@ -7,6 +7,7 @@
 	align-items: center;
 	display: flex;
 	flex-direction: row;
+	align-items: flex-end;
 
 	span {
 		margin-left: 10px;
@@ -41,10 +42,37 @@
 			text-decoration: underline;
 		}
 	}
+
+	.article-list {
+		li {
+			.article {
+				a {
+					font-size: 25px;
+					line-height: 32px;
+					color: $telex-main-color;
+				}
+			}
+		}
+	}
 }
 
 .article_body {
 	@include xl {
+
+		.article_tags {
+			margin: 20px 0;
+			padding-bottom: 0;
+
+			a {
+				text-decoration: none;
+				background: rgba($color: $telex-green, $alpha: 1.0);
+				color: #fff;
+				text-decoration: none;
+				padding: 5px 8px;
+				border-radius: 10px;
+			}
+		}
+
 		p {
 			span {
 				&.highlight {
@@ -131,5 +159,11 @@
 				}
 			}
 		}
+	}
+}
+
+.article-content-wrapper {
+	@include xl {
+		grid-template-columns: 1fr;
 	}
 }

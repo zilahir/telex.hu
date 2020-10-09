@@ -29,7 +29,7 @@ chrome.extension.sendMessage({}, () => {
 							document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 						}
 					})
-				}, 100)
+				}, 180)
 				setTimeout(() => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
