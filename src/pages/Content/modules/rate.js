@@ -16,8 +16,8 @@ export function addRateContainer() {
 		.then(result => {
 			const temporaryResult = result.data
 			if (result.data.length > 0) {
-				likeCount = temporaryResult.filter(rate => rate.type === LIKE)
-				disLikeCount = temporaryResult.filter(rate => rate.type === DISLIKE)
+				likeCount = temporaryResult.filter(rate => rate.type === LIKE).length
+				disLikeCount = temporaryResult.filter(rate => rate.type === DISLIKE).length
 			}
 		})
 	const socialContainer = document.querySelector('.social-wrapper')
@@ -65,8 +65,8 @@ export function addRateContainer() {
 	const thumbsUpMeta = document.createElement('span')
 	const thumbsDownMeta = document.createElement('span')
 	const revisionCountMeta = document.createElement('span')
-	thumbsUpMeta.innerHTML = `${thumbsUpIcon} ${likeCount.length}`
-	thumbsDownMeta.innerHTML = `${thumbsDownIcon} ${disLikeCount.length}`
+	thumbsUpMeta.innerHTML = `${thumbsUpIcon} ${likeCount}`
+	thumbsDownMeta.innerHTML = `${thumbsDownIcon} ${disLikeCount}`
 	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} felülvizsgálat`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')
