@@ -34,7 +34,7 @@ chrome.extension.sendMessage({}, () => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
 					})
-				}, 100)
+				}, 180)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')
 

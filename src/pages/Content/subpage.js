@@ -1,6 +1,6 @@
 import Fingerprint2 from 'fingerprintjs2'
 
-import { cloudFnGet, cloudFnPost } from '../../requests'
+import { cloudFnPost } from '../../requests'
 import { apiEndpoints } from '../../requests/apiEndpoints'
 import { subPageSelectors } from './consts'
 import { setFingerprint } from '../../store/actions/fingerprint'
