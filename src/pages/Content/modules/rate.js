@@ -1,12 +1,16 @@
 /* eslint-disable no-console */
 
 import { revisionIcon, thumbsDownIcon, thumbsUpIcon } from '../../../icons'
+import { cloudFnPost } from '../../../requests'
+import { apiEndpoints } from '../../../requests/apiEndpoints'
 import { store } from '../../../store/configureStore'
 
 /**
  *
  */
 export function addRateContainer() {
+	const socialContainer = document.querySelector('.social-wrapper')
+
 	const articleRootContainer = document.querySelector('.article_body')
 	const container = document.createElement('div')
 	const rateOuterContainer = document.createElement('div')
@@ -28,10 +32,16 @@ export function addRateContainer() {
 	container.append(rightContainer)
 
 	rightContainer.addEventListener('click', () => (
-		console.debug('clicked DOWN')
+		cloudFnPost(`${apiEndpoints.insertLike}`, {
+			type: 'DISLIKE',
+			articleId: store.getState().article.thisArticleId,
+		})
 	))
 	leftContainer.addEventListener('click', () => (
-		console.debug('clicked UP')
+		cloudFnPost(`${apiEndpoints.insertLike}`, {
+			type: 'LIKE',
+			articleId: store.getState().article.thisArticleId,
+		})
 	))
 
 	rateOuterContainer.append(container)
@@ -45,6 +55,8 @@ export function addRateContainer() {
 	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} felülvizsgálat`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')
+	articleMetaContainer.querySelector('div').parentNode.append(socialContainer)
+	socialContainer.remove()
 	articleMetaContainer.append(thumbsUpMeta)
 	articleMetaContainer.append(thumbsDownMeta)
 	articleMetaContainer.append(revisionCountMeta)

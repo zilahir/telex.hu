@@ -17,7 +17,6 @@ function handleImageClick(image) {
 
 chrome.runtime.onMessage.addListener(message => {
 	if (message.isArticle) {
-		console.debug('hello')
 		const readyStateCheckInterval = setInterval(() => {
 			if (document.readyState === 'complete') {
 				clearInterval(readyStateCheckInterval)
