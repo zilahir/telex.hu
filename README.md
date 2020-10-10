@@ -75,4 +75,10 @@ The coreccted text are being saved into a database, and waiting for approval. On
 
 ![gallery](./docs/images/telex_6.png)
 
+## Dark Mode
+
+There is an implemetion witin the `Chrome extension` that enables the usage of _dark mode_ on telex.hu
+
+![wider layout](./docs/images/telex_3.png)
+
 > To be continued... Stay tuned!
