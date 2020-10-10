@@ -1,5 +1,7 @@
 # Telex.hu – Unoficcial Chrome Extension
 
+>Public beta release date: 15th of October, 2020
+
 <p style="background-color: #c1c1c1; padding: 20px; border-left: 10px solid #444">
 🇭🇺  Disclaimer: Ez egy <i>unofficial</i> telex.hu chrome extension. A telex.hu-n megjelenő tartalmak a telex.hu tulajdona.
 </p>
@@ -72,3 +74,5 @@ Unfortunately, despite teh fact how we all love telex, and being happy about the
 The coreccted text are being saved into a database, and waiting for approval. Once it's approved, for readers, having this `extension` installed the corrected text will be visible.
 
 ![gallery](./docs/images/telex_6.png)
+
+> To be continued... Stay tuned!
