@@ -1,3 +1,4 @@
+/* global-chrome */
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -23,6 +24,9 @@ const Login = () => {
 			password,
 		}).then(result => {
 			dispatch(setUser(result.data))
+			chrome.runtime.sendMessage({
+				hello: true,
+			})
 		})
 	}
 	return (
