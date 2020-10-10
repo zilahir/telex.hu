@@ -62,3 +62,13 @@ The option for this is privded at the end of the articles (_rate after read_, ri
 ![gallery](./docs/images/telex_5.png)
 
 Every reader allowed to rate one article once. To make this possible, the request being sent to the _telex.hu_ microservice (which will be described in a later section of this `README`) stores the user's browser's _fingerprint_. Don't freak out, this is a _pretty standard_ procedure.
+
+#### Revision
+
+Unfortunately, despite teh fact how we all love telex, and being happy about their existance, it would be anfair not to mention how often they make not just typos in their articles, but actual grammatical issues, or producing grammatically incorrect sentences. While making a mistake was never problem, this `Chrome Extension` has a built in `revision system` that allows the users to corrrect the sentences.
+
+![gallery](./docs/images/telex_revision.gif)
+
+The coreccted text are being saved into a database, and waiting for approval. Once it's approved, for readers, having this `extension` installed the corrected text will be visible.
+
+![gallery](./docs/images/telex_6.png)
