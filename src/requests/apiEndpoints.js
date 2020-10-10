@@ -6,6 +6,8 @@ export const apiEndpoints = {
 	authUser: `${apiRoot}/auth`,
 	insertReview: `${apiRoot}/review`,
 	getReviews: `${apiRoot}/review`,
+	insertLike: `${apiRoot}/analytics/like`,
+	getLikes: `${apiRoot}/analytics/like`,
 }
 
 export const telexApiEndpoints = {

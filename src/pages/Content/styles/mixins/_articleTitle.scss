@@ -1,0 +1,7 @@
+@import '../variables';
+
+@mixin articleTitle($color:$telex-main-color) {
+	font-size: 25px;
+	line-height: 32px;
+	color: $color;
+}

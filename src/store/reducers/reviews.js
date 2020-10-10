@@ -1,7 +1,8 @@
-import { SET_APPROVED_REVISIONS } from '../actionTypes'
+import { SET_ALL_REVISIONS, SET_APPROVED_REVISIONS } from '../actionTypes'
 
 const initialState = {
 	approvedRevisions: [],
+	allRevisions: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = initialState, action) => {
 		return {
 			...state,
 			approvedRevisions: action.payload.approvedRevisions,
+		}
+	case SET_ALL_REVISIONS:
+		return {
+			...state,
+			allRevisions: action.payload.allRevisions,
 		}
 	default:
 		return state

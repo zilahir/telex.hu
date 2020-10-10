@@ -6,6 +6,8 @@ import createChromeStorage from 'redux-persist-chrome-storage'
 import article from './reducers/article'
 import revisions from './reducers/reviews'
 import user from './reducers/user'
+import fingerprint from './reducers/fingerprint'
+import misc from './reducers/misc'
 
 const storage = createChromeStorage(window.chrome, 'sync')
 
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
 	article,
 	revisions,
 	user,
+	fingerprint,
+	misc,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

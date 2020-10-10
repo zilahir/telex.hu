@@ -1,13 +1,30 @@
 /* eslint-disable no-console */
 
-import { thumbsDownIcon, thumbsUpIcon } from '../../../icons'
+import { revisionIcon, thumbsDownIcon, thumbsUpIcon } from '../../../icons'
+import { cloudFnGet, cloudFnPost } from '../../../requests'
+import { apiEndpoints } from '../../../requests/apiEndpoints'
+import { store } from '../../../store/configureStore'
+import { DISLIKE, LIKE } from '../consts'
 
 /**
  *
  */
 export function addRateContainer() {
+	let likeCount = 0
+	let disLikeCount = 0
+	cloudFnGet(`${apiEndpoints.getLikes}/${store.getState().article.thisArticleId}`)
+		.then(result => {
+			const temporaryResult = result.data
+			if (result.data.length > 0) {
+				likeCount = temporaryResult.filter(rate => rate.type === LIKE).length
+				disLikeCount = temporaryResult.filter(rate => rate.type === DISLIKE).length
+			}
+		})
+	const socialContainer = document.querySelector('.social-wrapper')
+	const articleContentWrapper = document.querySelector('.article-content-wrapper')
+	articleContentWrapper.classList.add('article-content-wrapper-new')
+	articleContentWrapper.classList.remove('article-content-wrapper')
 	const articleRootContainer = document.querySelector('.article_body')
-	console.debug('articleRootContainer', articleRootContainer)
 	const container = document.createElement('div')
 	const rateOuterContainer = document.createElement('div')
 	rateOuterContainer.setAttribute('class', 'rate-outer')
@@ -28,10 +45,18 @@ export function addRateContainer() {
 	container.append(rightContainer)
 
 	rightContainer.addEventListener('click', () => (
-		console.debug('clicked DOWN')
+		cloudFnPost(`${apiEndpoints.insertLike}`, {
+			type: DISLIKE,
+			articleId: store.getState().article.thisArticleId,
+			fingerPrint: store.getState().fingerprint.fingerprint,
+		})
 	))
 	leftContainer.addEventListener('click', () => (
-		console.debug('clicked UP')
+		cloudFnPost(`${apiEndpoints.insertLike}`, {
+			type: LIKE,
+			articleId: store.getState().article.thisArticleId,
+			fingerPrint: store.getState().fingerprint.fingerprint,
+		})
 	))
 
 	rateOuterContainer.append(container)
@@ -39,10 +64,15 @@ export function addRateContainer() {
 
 	const thumbsUpMeta = document.createElement('span')
 	const thumbsDownMeta = document.createElement('span')
-	thumbsUpMeta.innerHTML = `${thumbsUpIcon}797`
-	thumbsDownMeta.innerHTML = `${thumbsDownIcon} 18`
+	const revisionCountMeta = document.createElement('span')
+	thumbsUpMeta.innerHTML = `${thumbsUpIcon} ${likeCount}`
+	thumbsDownMeta.innerHTML = `${thumbsDownIcon} ${disLikeCount}`
+	revisionCountMeta.innerHTML = `${revisionIcon} ${store.getState().revisions.allRevisions.length} felülvizsgálat`
 
 	const articleMetaContainer = document.querySelector('.article_title-bottom-new')
+	articleMetaContainer.querySelector('div').parentNode.append(socialContainer)
+	socialContainer.remove()
 	articleMetaContainer.append(thumbsUpMeta)
 	articleMetaContainer.append(thumbsDownMeta)
+	articleMetaContainer.append(revisionCountMeta)
 }

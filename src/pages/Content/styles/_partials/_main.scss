@@ -1,38 +1,27 @@
 @import '../mixins/mediaQueries';
 @import '../mixins/articleTag';
+@import '../mixins/articleTitle';
 @import '../variables';
 
 .container-new {
 	@include xl {
 		min-width: 90%;
 
-		.articles {
-			column-gap: 50px;
-		}
-
-		.article_desc {
-			color: $telex-article-description-color;
-			line-height: 1.5;
-			font-size: 18px;
-		}
-
-		.left-content-new,
-		.right-content-new {
-			.article {
-				.article_cat {}
-
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
+		.article {
+			.article_cat {
+				background: none;
 			}
+
+			.articles {
+				column-gap: 50px;
+			}
+
+			.left-content-new,
+			.right-content-new {}
 		}
 
 		.right-content-new {
-			.article {
-				.article_cat {}
-			}
+			.article {}
 		}
 
 		.middle-content-new {
@@ -84,16 +73,6 @@
 			grid-template-columns: repeat(4, 330px);
 			justify-content: space-between;
 			column-gap: 30px;
-
-			.article {
-				.article_cat {}
-
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
-			}
 		}
 	}
 
@@ -102,14 +81,8 @@
 
 		.main-block {
 			div {
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(2, 1fr);
 				column-gap: 50px;
-
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
-				}
 			}
 		}
 
@@ -119,14 +92,6 @@
 			.main-block {
 				div {
 					column-gap: 50px;
-				}
-			}
-
-			.article {
-				a {
-					font-size: 25px;
-					line-height: 32px;
-					color: $telex-main-color;
 				}
 			}
 		}
@@ -143,14 +108,6 @@
 
 		.articles-row {
 			column-gap: 50px;
-		}
-
-		.article {
-			a {
-				font-size: 25px;
-				line-height: 32px;
-				color: $telex-main-color;
-			}
 		}
 	}
 }

@@ -1,0 +1,83 @@
+@import '../variables';
+@import '../mixins/articleTitle';
+
+body {
+  &.darkmode {
+    background: rgba($color: $darkmode-background, $alpha: 0.95);
+
+    .header-new,
+    .footer-new {
+      background: rgba($color: $darkmode-background, $alpha: 1);
+    }
+
+    .article {
+      a {
+        @include articleTitle(#ffffff);
+      }
+    }
+
+    .title-with-border {
+      color: #ffffff;
+    }
+
+    .container-new {
+      .article_desc {
+        color: #ffffff;
+        line-height: 1.5;
+        font-size: 18px;
+      }
+    }
+
+    .above-nav-new {
+      &+nav {
+        background: rgba($color: $darkmode-background, $alpha: 1);
+
+        .container {
+          &:after {
+            content: unset;
+          }
+
+          .date-widget {
+            div {
+              color: #ffffff;
+            }
+          }
+
+          .weather-widget {
+            .weather-degree {
+              span {
+                &:first-of-type {
+                  color: #ffffff;
+                }
+              }
+            }
+          }
+
+          .nav-list {
+            li {
+              a {
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.lightmode {
+    .article {
+      a {
+        @include articleTitle;
+      }
+    }
+
+    .container-new {
+      .article_desc {
+        color: $telex-article-description-color;
+        line-height: 1.5;
+        font-size: 18px;
+      }
+    }
+  }
+}
