@@ -70,8 +70,9 @@ const Root = () => {
 		cloudFnGet(covidApi.getHistoricalData).then(result => {
 			const formattedCases = Object.keys(result.data.timeline.cases).map(
 				thisCase => ({
-					number: result.data.timeline.cases[thisCase],
+					totalCase: result.data.timeline.cases[thisCase],
 					date: format(new Date(thisCase), 'yyyy-MM-dd'),
+					deaths: result.data.timeline.deaths[thisCase],
 				}),
 			)
 			setCases(formattedCases)
@@ -97,9 +98,15 @@ const Root = () => {
 						<Tooltip />
 						<Area
 							type="monotone"
-							dataKey="number"
-							stroke="#8884d8"
-							fill="#8884d8"
+							dataKey="totalCase"
+							stroke="#ff9994"
+							fill="#ff9994"
+						/>
+						<Area
+							type="monotone"
+							dataKey="deaths"
+							stroke="#ff5048"
+							fill="#ff5048"
 						/>
 					</AreaChart>
 				</ResponsiveContainer>
