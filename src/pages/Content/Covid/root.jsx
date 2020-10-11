@@ -73,6 +73,7 @@ const Root = () => {
 					totalCase: result.data.timeline.cases[thisCase],
 					date: format(new Date(thisCase), 'MM-dd'),
 					deaths: result.data.timeline.deaths[thisCase],
+					recovered: result.data.timeline.recovered[thisCase],
 				}),
 			)
 			setCases(formattedCases)
@@ -98,15 +99,21 @@ const Root = () => {
 						<Tooltip />
 						<Area
 							type="monotone"
+							dataKey="deaths"
+							stroke="#ff5048"
+							fill="#ff5048"
+						/>
+						<Area
+							type="monotone"
 							dataKey="totalCase"
 							stroke="#ff9994"
 							fill="#ff9994"
 						/>
 						<Area
 							type="monotone"
-							dataKey="deaths"
-							stroke="#ff5048"
-							fill="#ff5048"
+							dataKey="recovered"
+							stroke="#8be28b"
+							fill="#8be28b"
 						/>
 					</AreaChart>
 				</ResponsiveContainer>
