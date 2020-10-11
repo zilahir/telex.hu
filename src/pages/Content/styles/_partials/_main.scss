@@ -7,6 +7,10 @@
 	@include xl {
 		min-width: 90%;
 
+		.articles-block {
+			border-top: 0;
+		}
+
 		.article {
 			.article_cat {
 				background: none;
