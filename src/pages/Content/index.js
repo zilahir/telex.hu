@@ -9,10 +9,9 @@ import { setThisArticleId } from '../../store/actions/article'
 import { setAllRevisions, setApprovedRevisions } from '../../store/actions/reviews'
 import { bankCardIcon } from '../../icons'
 import { createDarkMode } from './modules/darkmode'
+import { renderCovidApp } from './Covid'
 
 const darkMode = store.getState().misc.darkmode
-
-console.debug('store', store.getState())
 
 chrome.extension.sendMessage({}, () => {
 	const readyStateCheckInterval = setInterval(() => {
@@ -20,6 +19,8 @@ chrome.extension.sendMessage({}, () => {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
 				const aid = document.querySelector('.aid a')
+				const covidAppContainer = document.createElement('div')
+				covidAppContainer.setAttribute('id', 'covid-app')
 				aid.classList.add('aid-new')
 				aid.innerHTML = bankCardIcon
 				setTimeout(() => {
@@ -40,6 +41,7 @@ chrome.extension.sendMessage({}, () => {
 					})
 					createDarkMode()
 					const articleContentNew = document.querySelector('.middle-content-new')
+					articleContentNew.append(covidAppContainer)
 					const newArticleAnchor = articleContentNew.querySelectorAll('a')
 					const newArticleContent = articleContentNew.querySelector('.article_desc')
 					const newArticleImageContainer = articleContentNew.querySelector('.article_img.with-image')
@@ -47,6 +49,7 @@ chrome.extension.sendMessage({}, () => {
 					newArticleContent.classList.add('article_desc-new')
 					newArticleImageContainer.append(newArticleContent)
 					newArticleImageContainer.append(newArticleAnchor[1])
+					renderCovidApp()
 				}, 190)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')
