@@ -52,6 +52,32 @@ header {
 
 			.social-list-wrapper {
 				align-self: center;
+
+				li {
+					span {
+						svg {
+							width: 20px;
+							height: 20px;
+							fill: #fff;
+							position: relative;
+							top: -2px;
+
+							&:hover {
+								cursor: pointer;
+							}
+						}
+					}
+
+					&.darkmode {
+						span {
+							svg {
+								path {
+									fill: #ffffff;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}

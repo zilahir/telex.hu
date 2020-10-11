@@ -7,6 +7,10 @@
 	@include xl {
 		min-width: 90%;
 
+		.articles-block {
+			border-top: 0;
+		}
+
 		.article {
 			.article_cat {
 				background: none;
@@ -42,6 +46,23 @@
 					}
 				}
 
+				.article-anchor-new,
+				.article_desc-new {
+					position: absolute;
+					background: #022a53;
+					color: #fff;
+					padding: 30px;
+				}
+
+				.article-anchor-new {
+					top: 50%
+				}
+
+				.article_desc-new {
+					top: 70%;
+				}
+
+
 				position: relative;
 
 				&:before {
@@ -51,7 +72,7 @@
 					top: 0;
 					width: 100%;
 					height: 100%;
-					background: rgba($color: $telex-main-color, $alpha: 0.2);
+					background: rgba($color: $telex-main-color, $alpha: 0.6);
 				}
 
 				.article_cat {

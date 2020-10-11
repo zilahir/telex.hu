@@ -8,8 +8,11 @@ import { store } from '../../store/configureStore'
 import { setThisArticleId } from '../../store/actions/article'
 import { setAllRevisions, setApprovedRevisions } from '../../store/actions/reviews'
 import { bankCardIcon } from '../../icons'
+import { createDarkMode } from './modules/darkmode'
 
-const darkMode = false
+const darkMode = store.getState().misc.darkmode
+
+console.debug('store', store.getState())
 
 chrome.extension.sendMessage({}, () => {
 	const readyStateCheckInterval = setInterval(() => {
@@ -35,7 +38,16 @@ chrome.extension.sendMessage({}, () => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
 					})
-				}, 180)
+					createDarkMode()
+					const articleContentNew = document.querySelector('.middle-content-new')
+					const newArticleAnchor = articleContentNew.querySelectorAll('a')
+					const newArticleContent = articleContentNew.querySelector('.article_desc')
+					const newArticleImageContainer = articleContentNew.querySelector('.article_img.with-image')
+					newArticleAnchor[1].classList.add('article-anchor-new')
+					newArticleContent.classList.add('article_desc-new')
+					newArticleImageContainer.append(newArticleContent)
+					newArticleImageContainer.append(newArticleAnchor[1])
+				}, 190)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')
 
