@@ -17,3 +17,6 @@ export const subPageSelectors = [
 
 export const LIKE = 'LIKE'
 export const DISLIKE = 'DISLIKE'
+
+export const LIGHT = 'LIGHT'.toLowerCase()
+export const DARK = 'DARK'.toLowerCase()
