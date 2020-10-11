@@ -2,6 +2,8 @@
 @import '../mixins/articleTitle';
 
 body {
+  transition: all 0.4s ease-in-out;
+
   &.darkmode {
     background: rgba($color: $darkmode-background, $alpha: 0.95);
 
