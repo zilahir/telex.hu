@@ -71,7 +71,7 @@ const Root = () => {
 			const formattedCases = Object.keys(result.data.timeline.cases).map(
 				thisCase => ({
 					totalCase: result.data.timeline.cases[thisCase],
-					date: format(new Date(thisCase), 'yyyy-MM-dd'),
+					date: format(new Date(thisCase), 'MM-dd'),
 					deaths: result.data.timeline.deaths[thisCase],
 				}),
 			)
@@ -94,7 +94,7 @@ const Root = () => {
 						}}
 					>
 						<XAxis dataKey="date" />
-						<YAxis />
+						<YAxis tickFormatter={value => `${value / 1000} K`} />
 						<Tooltip />
 						<Area
 							type="monotone"
