@@ -1,7 +1,7 @@
 import Fingerprint2 from 'fingerprintjs2'
 
 import { cloudFnGet, cloudFnPost } from '../../requests'
-import { apiEndpoints, telexApiEndpoints } from '../../requests/apiEndpoints'
+import { apiEndpoints } from '../../requests/apiEndpoints'
 import { subPageSelectors } from './consts'
 import { setFingerprint } from '../../store/actions/fingerprint'
 import { store } from '../../store/configureStore'
@@ -30,16 +30,18 @@ chrome.runtime.onMessage.addListener(message => {
 
 				const thisArticleUrl = window.location.pathname
 				const thisArticleSlug = thisArticleUrl.split('/').filter((item, index) => index > 4)
-				cloudFnGet(`${telexApiEndpoints.getArtileData}/${thisArticleSlug}`)
+				cloudFnPost(`${apiEndpoints.getArticleId}`, {
+					articleSlug: thisArticleSlug,
+				})
 					.then(articleResult => {
-						store.dispatch(setThisArticleId(articleResult.data.id))
-						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}/true`)
+						store.dispatch(setThisArticleId(articleResult.data.article.articleResult))
+						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleResult}/true`)
 						Fingerprint2.get(components => {
 							const values = components.map(component => component.value)
 							const murmur = Fingerprint2.x64hash128(values.join(''), 31)
 							store.dispatch(setFingerprint(murmur))
 							cloudFnPost(apiEndpoints.sendArticleAnalytics, {
-								articleId: articleResult.data.id,
+								articleId: articleResult.data.article.articleResult,
 								visits: 1,
 								fingerPrint: murmur,
 							})

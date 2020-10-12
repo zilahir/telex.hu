@@ -1,5 +1,4 @@
 const apiRoot = 'http://localhost:5000'
-const telexHu = 'https://www.telex.hu'
 const covidApiRoot = 'https://disease.sh/v3/covid-19'
 
 export const apiEndpoints = {
@@ -9,10 +8,7 @@ export const apiEndpoints = {
 	getReviews: `${apiRoot}/review`,
 	insertLike: `${apiRoot}/analytics/like`,
 	getLikes: `${apiRoot}/analytics/like`,
-}
-
-export const telexApiEndpoints = {
-	getArtileData: `${telexHu}/api/articles`,
+	getArticleId: `${apiRoot}//article/get-article-id`,
 }
 
 export const covidApi = {
