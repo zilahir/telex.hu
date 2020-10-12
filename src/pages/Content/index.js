@@ -55,7 +55,6 @@ chrome.extension.sendMessage({}, () => {
 				articlesAside.remove()
 			}
 			if (store.getState().misc.darkmode) {
-				console.debug('store', store.getState().misc.darkmode)
 				document.body.classList.add('darkmode')
 			} else {
 				document.body.classList.add('lightmode')
