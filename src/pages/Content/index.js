@@ -56,22 +56,6 @@ chrome.extension.sendMessage({}, () => {
 
 				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
 				articlesAside.remove()
-			} else {
-				const thisArticleUrl = window.location.pathname
-				const thisArticleSlug = thisArticleUrl.split('/').filter((item, index) => index > 4)
-				cloudFnGet(`${telexApiEndpoints.getArtileData}/${thisArticleSlug}`)
-					.then(articleResult => {
-						store.dispatch(setThisArticleId(articleResult.data.id))
-						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}/true`)
-							.then(revisionResult => {
-								store.dispatch(setApprovedRevisions(revisionResult.data.revision))
-								hightLightText()
-							})
-						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}`)
-							.then(allRevisionData => {
-								store.dispatch(setAllRevisions(allRevisionData.data.revision))
-							})
-					})
 			}
 			if (darkMode) {
 				document.body.classList.add('darkmode')

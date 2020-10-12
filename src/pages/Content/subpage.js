@@ -1,10 +1,13 @@
 import Fingerprint2 from 'fingerprintjs2'
 
-import { cloudFnPost } from '../../requests'
-import { apiEndpoints } from '../../requests/apiEndpoints'
+import { cloudFnGet, cloudFnPost } from '../../requests'
+import { apiEndpoints, telexApiEndpoints } from '../../requests/apiEndpoints'
 import { subPageSelectors } from './consts'
 import { setFingerprint } from '../../store/actions/fingerprint'
 import { store } from '../../store/configureStore'
+import { setThisArticleId } from '../../store/actions/article'
+import { setAllRevisions, setApprovedRevisions } from '../../store/actions/reviews'
+import { hightLightText } from './modules/revision'
 
 const { addRateContainer } = require('./modules/rate')
 
@@ -24,16 +27,33 @@ chrome.runtime.onMessage.addListener(message => {
 				clearInterval(readyStateCheckInterval)
 				document.querySelector('.article_title').classList.add('telex-article-title')
 				document.querySelector('.article_title').classList.remove('article_title')
-				Fingerprint2.get(components => {
-					const values = components.map(component => component.value)
-					const murmur = Fingerprint2.x64hash128(values.join(''), 31)
-					store.dispatch(setFingerprint(murmur))
-					cloudFnPost(apiEndpoints.sendArticleAnalytics, {
-						articleId: 1098,
-						visits: 1,
-						fingerPrint: murmur,
+
+				const thisArticleUrl = window.location.pathname
+				const thisArticleSlug = thisArticleUrl.split('/').filter((item, index) => index > 4)
+				cloudFnGet(`${telexApiEndpoints.getArtileData}/${thisArticleSlug}`)
+					.then(articleResult => {
+						store.dispatch(setThisArticleId(articleResult.data.id))
+						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}/true`)
+						Fingerprint2.get(components => {
+							const values = components.map(component => component.value)
+							const murmur = Fingerprint2.x64hash128(values.join(''), 31)
+							store.dispatch(setFingerprint(murmur))
+							cloudFnPost(apiEndpoints.sendArticleAnalytics, {
+								articleId: articleResult.data.id,
+								visits: 1,
+								fingerPrint: murmur,
+							})
+						})
+							.then(revisionResult => {
+								store.dispatch(setApprovedRevisions(revisionResult.data.revision))
+								hightLightText()
+							})
+						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}`)
+							.then(allRevisionData => {
+								store.dispatch(setAllRevisions(allRevisionData.data.revision))
+							})
 					})
-				})
+
 				subPageSelectors.forEach(currentSelector => {
 					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
 					if (currentSelector.removeOld) {
