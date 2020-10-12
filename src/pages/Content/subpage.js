@@ -29,19 +29,19 @@ chrome.runtime.onMessage.addListener(message => {
 				document.querySelector('.article_title').classList.remove('article_title')
 
 				const thisArticleUrl = window.location.pathname
-				const thisArticleSlug = thisArticleUrl.split('/').filter((item, index) => index > 4)
+				const thisArticleSlug = thisArticleUrl.split('/').find((item, index) => index > 4)
 				cloudFnPost(`${apiEndpoints.getArticleId}`, {
-					articleSlug: thisArticleSlug,
+					articleSlug: thisArticleSlug[0],
 				})
 					.then(articleResult => {
-						store.dispatch(setThisArticleId(articleResult.data.article.articleResult))
-						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleResult}/true`)
+						store.dispatch(setThisArticleId(articleResult.data.article.articleId))
+						// cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleId}/true`)
 						Fingerprint2.get(components => {
 							const values = components.map(component => component.value)
 							const murmur = Fingerprint2.x64hash128(values.join(''), 31)
 							store.dispatch(setFingerprint(murmur))
 							cloudFnPost(apiEndpoints.sendArticleAnalytics, {
-								articleId: articleResult.data.article.articleResult,
+								articleId: articleResult.data.article.articleId,
 								visits: 1,
 								fingerPrint: murmur,
 							})
@@ -52,14 +52,17 @@ chrome.runtime.onMessage.addListener(message => {
 							})
 						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}`)
 							.then(allRevisionData => {
+								console.debug('allRevisionData', allRevisionData)
 								store.dispatch(setAllRevisions(allRevisionData.data.revision))
 							})
 					})
 
 				subPageSelectors.forEach(currentSelector => {
-					document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
-					if (currentSelector.removeOld) {
-						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
+					if (document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`)) {
+						document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.add(currentSelector.newClass)
+						if (currentSelector.removeOld) {
+							document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
+						}
 					}
 				})
 				addRateContainer()

@@ -8,7 +8,7 @@ export const apiEndpoints = {
 	getReviews: `${apiRoot}/review`,
 	insertLike: `${apiRoot}/analytics/like`,
 	getLikes: `${apiRoot}/analytics/like`,
-	getArticleId: `${apiRoot}//article/get-article-id`,
+	getArticleId: `${apiRoot}/article/get-article-id`,
 }
 
 export const covidApi = {
