@@ -80,6 +80,7 @@ function removeAllRevisionBox() {
 export function hightLightText() {
 	const allParagraph = document.querySelectorAll('.article_body p')
 	const allApprovedRevisions = store.getState().revisions.approvedRevisions
+	console.debug('allApprovedRevisions', allApprovedRevisions)
 	allParagraph.forEach((paragraph, paragraphIndex) => {
 		const hasFixedText = allApprovedRevisions.find(
 			revision => revision.paragraphIndex === paragraphIndex,

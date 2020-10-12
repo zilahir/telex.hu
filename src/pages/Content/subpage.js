@@ -31,11 +31,10 @@ chrome.runtime.onMessage.addListener(message => {
 				const thisArticleUrl = window.location.pathname
 				const thisArticleSlug = thisArticleUrl.split('/').find((item, index) => index > 4)
 				cloudFnPost(`${apiEndpoints.getArticleId}`, {
-					articleSlug: thisArticleSlug[0],
+					articleSlug: thisArticleSlug,
 				})
 					.then(articleResult => {
 						store.dispatch(setThisArticleId(articleResult.data.article.articleId))
-						// cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleId}/true`)
 						Fingerprint2.get(components => {
 							const values = components.map(component => component.value)
 							const murmur = Fingerprint2.x64hash128(values.join(''), 31)
@@ -45,16 +44,16 @@ chrome.runtime.onMessage.addListener(message => {
 								visits: 1,
 								fingerPrint: murmur,
 							})
+							cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleId}/true`)
+								.then(revisionResult => {
+									store.dispatch(setApprovedRevisions(revisionResult.data.revision))
+									hightLightText()
+								})
+							cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.article.articleId}`)
+								.then(allRevisionData => {
+									store.dispatch(setAllRevisions(allRevisionData.data.revision))
+								})
 						})
-							.then(revisionResult => {
-								store.dispatch(setApprovedRevisions(revisionResult.data.revision))
-								hightLightText()
-							})
-						cloudFnGet(`${apiEndpoints.getReviews}/${articleResult.data.id}`)
-							.then(allRevisionData => {
-								console.debug('allRevisionData', allRevisionData)
-								store.dispatch(setAllRevisions(allRevisionData.data.revision))
-							})
 					})
 
 				subPageSelectors.forEach(currentSelector => {
