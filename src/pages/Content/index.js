@@ -5,8 +5,7 @@ import { store } from '../../store/configureStore'
 import { bankCardIcon } from '../../icons'
 import { createDarkMode } from './modules/darkmode'
 import { renderCovidApp } from './Covid'
-
-const darkMode = store.getState().misc.darkmode
+import { toggleDarkMode } from '../../store/actions/misc'
 
 chrome.extension.sendMessage({}, () => {
 	const readyStateCheckInterval = setInterval(() => {
@@ -18,8 +17,8 @@ chrome.extension.sendMessage({}, () => {
 				covidAppContainer.setAttribute('id', 'covid-app')
 				aid.classList.add('aid-new')
 				aid.innerHTML = bankCardIcon
-				chrome.storage.local.get("darkmode", function(obj){
-					console.debug(obj.myKey);
+				chrome.storage.local.get('darkmode', value => {
+					store.dispatch(toggleDarkMode(value.darkmode))
 				})
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
@@ -55,7 +54,8 @@ chrome.extension.sendMessage({}, () => {
 				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
 				articlesAside.remove()
 			}
-			if (darkMode) {
+			if (store.getState().misc.darkmode) {
+				console.debug('store', store.getState().misc.darkmode)
 				document.body.classList.add('darkmode')
 			} else {
 				document.body.classList.add('lightmode')
