@@ -18,6 +18,9 @@ chrome.extension.sendMessage({}, () => {
 				covidAppContainer.setAttribute('id', 'covid-app')
 				aid.classList.add('aid-new')
 				aid.innerHTML = bankCardIcon
+				chrome.storage.local.get("darkmode", function(obj){
+					console.debug(obj.myKey);
+				})
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
 						if (currentSelector.oldClass) {
