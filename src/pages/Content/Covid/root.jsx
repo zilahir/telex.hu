@@ -12,6 +12,7 @@ import { format } from 'date-fns'
 import { cloudFnGet } from '../../../requests'
 import { covidApi } from '../../../requests/apiEndpoints'
 import styles from './root.module.scss'
+import Box from './components/Box'
 
 /**
  * @author zilahir
@@ -20,6 +21,7 @@ import styles from './root.module.scss'
 
 const Root = () => {
 	const [cases, setCases] = useState([])
+	const [isReady, setIsReady] = useState(false)
 	useEffect(() => {
 		cloudFnGet(covidApi.getHistoricalData).then(result => {
 			const formattedCases = Object.keys(result.data.timeline.cases).map(
@@ -41,7 +43,7 @@ const Root = () => {
 	)
 	return (
 		<div>
-			{cases.length > 0 ? (
+			{cases.length > 0 && isReady ? (
 				<ResponsiveContainer width={880} height={400}>
 					<AreaChart
 						width={500}
@@ -81,7 +83,7 @@ const Root = () => {
 					</AreaChart>
 				</ResponsiveContainer>
 			) : (
-				<p>lofasz</p>
+				<Box />
 			)}
 		</div>
 	)
