@@ -26,8 +26,7 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-// eslint-disable-next-line no-underscore-dangle
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers = compose
 
 const configureStore = () => createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)))
 

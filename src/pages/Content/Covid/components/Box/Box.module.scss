@@ -1,0 +1,19 @@
+@import '../../../styles/variables';
+
+.boxContainer {
+  background: rgba($color: $telex-main-color, $alpha: 1.0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+
+  p,
+  a.ghUrl {
+    font-size: 18px;
+    color: #ffffff;
+  }
+
+  a.ghUrl {
+    text-decoration: underline;
+  }
+}

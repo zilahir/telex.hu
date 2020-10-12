@@ -2,6 +2,9 @@ import { moonIcon, sunIcon } from '../../../icons'
 import { store } from '../../../store/configureStore'
 import { toggleDarkMode } from '../../../store/actions/misc'
 
+/**
+ *
+ */
 export function createDarkMode() {
 	const socialListWrapper = document.querySelector('.social-list-wrapper ul')
 	const darkModeLiElement = document.createElement('li')
