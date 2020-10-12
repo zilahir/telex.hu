@@ -11,8 +11,8 @@
 		"default_icon": "icon-34.png"
 	},
 	"permissions": [
-		"https://www.telex.hu/",
-		"https://www.telex.hu/*",
+		"https://*.telex.hu/",
+		"https://*.telex.hu/*",
 		"tabs",
 		"webNavigation",
 		"history",
@@ -26,7 +26,7 @@
 		"128": "icon-128.png"
 	},
 	"content_scripts": [{
-		"matches": ["https://www.telex.hu/*"],
+		"matches": ["https://*.telex.hu/*"],
 		"js": ["contentScript.bundle.js", "contentScriptSubPage.bundle.js"],
 		"css": ["content.styles.css"]
 	}],

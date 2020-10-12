@@ -7,11 +7,13 @@ header {
 			padding-top: 0;
 			padding-bottom: 0;
 			display: flex;
-			justify-content: space-around;
+			justify-content: space-between;
 			align-items: center;
 
+
 			.aid {
-				// background-image: url($donate-icon-url);
+				flex: 1;
+				;
 				background-position: 50% 50%;
 				background-size: 25px;
 				background-repeat: no-repeat;
@@ -43,6 +45,12 @@ header {
 			}
 
 			.logo {
+				position: unset;
+				flex: 1;
+				justify-content: center;
+				align-items: center;
+				display: flex;
+
 				img {
 					transform: unset;
 					max-width: 80px;
@@ -51,6 +59,8 @@ header {
 			}
 
 			.social-list-wrapper {
+				flex: 1;
+				justify-content: flex-end;
 				align-self: center;
 
 				li {

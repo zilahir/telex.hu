@@ -49,17 +49,17 @@
 				.article-anchor-new,
 				.article_desc-new {
 					position: absolute;
-					background: #022a53;
+					background: rgba($color: $telex-main-color, $alpha: 0.6);
 					color: #fff;
 					padding: 30px;
 				}
 
 				.article-anchor-new {
-					top: 50%
+					top: 30%
 				}
 
 				.article_desc-new {
-					top: 70%;
+					top: 50%;
 				}
 
 
