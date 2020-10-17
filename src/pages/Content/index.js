@@ -12,8 +12,6 @@ chrome.extension.sendMessage({}, () => {
 		if (document.readyState === 'complete') {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
-				const covidAppContainer = document.createElement('div')
-				covidAppContainer.setAttribute('id', 'covid-app')
 				chrome.storage.local.get('darkmode', value => {
 					store.dispatch(toggleDarkMode(value.darkmode))
 				})
@@ -28,15 +26,15 @@ chrome.extension.sendMessage({}, () => {
 							document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 						}
 					})
-				}, 500)
-				setTimeout(() => {
-					fixHeader()
-				})
+				}, 1000)
 				setTimeout(() => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
 					})
 					createDarkMode()
+					const covidAppContainer = document.createElement('div')
+					covidAppContainer.setAttribute('id', 'covid-app')
+					fixHeader()
 					const articleContentNew = document.querySelector('.middle-content-new')
 					articleContentNew.append(covidAppContainer)
 					const newArticleAnchor = articleContentNew.querySelectorAll('a')
@@ -47,7 +45,7 @@ chrome.extension.sendMessage({}, () => {
 					newArticleImageContainer.append(newArticleContent)
 					newArticleImageContainer.append(newArticleAnchor[1])
 					renderCovidApp()
-				}, 210)
+				}, 1000)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')
 
