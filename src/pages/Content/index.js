@@ -31,7 +31,7 @@ chrome.extension.sendMessage({}, () => {
 							document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 						}
 					})
-				}, 180)
+				}, 200)
 				setTimeout(() => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
@@ -47,7 +47,7 @@ chrome.extension.sendMessage({}, () => {
 					newArticleImageContainer.append(newArticleContent)
 					newArticleImageContainer.append(newArticleAnchor[1])
 					renderCovidApp()
-				}, 190)
+				}, 210)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')
 
