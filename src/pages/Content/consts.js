@@ -7,11 +7,15 @@ export const selectors = [
 	{ tag: 'section', oldClass: 'articles-block', newClass: 'articles-block-new', removeOld: false },
 	{ tag: 'div', oldClass: 'articles-row-wrapper', newClass: 'articles-row-wrapper-nww', removeOld: false },
 	{ tag: 'footer', oldClass: undefined, newClass: 'footer-new', remvoeOld: false },
-	{ tag: 'header', oldClass: undefined, newClass: 'header-new', removeOld: false },
+	// { tag: 'header', oldClass: undefined, newClass: 'header-new', removeOld: false },
 ]
 
 export const subPageSelectors = [
 	{ tag: 'div', oldClass: 'article_title-bottom', newClass: 'article_title-bottom-new', removeOld: true },
+]
+
+export const headerSelectors = [
+	{ tag: 'header', oldClass: undefined, newClass: 'header-new', removeOld: false },
 ]
 
 export const LIKE = 'LIKE'

@@ -25,11 +25,14 @@
 	"icons": {
 		"128": "icon-128.png"
 	},
-	"content_scripts": [{
-		"matches": ["https://*.telex.hu/*"],
-		"js": ["contentScript.bundle.js", "contentScriptSubPage.bundle.js"],
-		"css": ["content.styles.css"]
-	}],
+	"content_scripts": [
+		{
+			"matches": ["https://*.telex.hu/*"],
+			"js": ["contentScript.bundle.js", "contentScriptSubPage.bundle.js"],
+			"css": ["content.styles.css"],
+			"run_at": "document_end"
+		}
+	],
 	"web_accessible_resources": [
 		"content.styles.css",
 		"icon-128.png",
