@@ -27,7 +27,7 @@ function isRootPage(thisPageUrl) {
 }
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(details => {
-	if (details.url !== 'https://www.telex.hu/' && details.url.indexOf('https://www.telex.hu/' !== -1)) {
+	if (isRootPage(details.url)) {
 		chrome.tabs.sendMessage(details.tabId, {
 			isArticle: true,
 		})
