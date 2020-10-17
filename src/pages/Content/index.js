@@ -6,17 +6,15 @@ import { bankCardIcon } from '../../icons'
 import { createDarkMode } from './modules/darkmode'
 import { renderCovidApp } from './Covid'
 import { toggleDarkMode } from '../../store/actions/misc'
+import { fixHeader } from './modules/header'
 
 chrome.extension.sendMessage({}, () => {
 	const readyStateCheckInterval = setInterval(() => {
 		if (document.readyState === 'complete') {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
-				const aid = document.querySelector('.aid a')
 				const covidAppContainer = document.createElement('div')
 				covidAppContainer.setAttribute('id', 'covid-app')
-				aid.classList.add('aid-new')
-				aid.innerHTML = bankCardIcon
 				chrome.storage.local.get('darkmode', value => {
 					store.dispatch(toggleDarkMode(value.darkmode))
 				})
@@ -31,7 +29,10 @@ chrome.extension.sendMessage({}, () => {
 							document.querySelector(`${currentSelector.tag}.${currentSelector.oldClass}`).classList.remove(currentSelector.oldClass)
 						}
 					})
-				}, 200)
+				}, 500)
+				setTimeout(() => {
+					fixHeader()
+				})
 				setTimeout(() => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)

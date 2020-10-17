@@ -27,7 +27,7 @@ function isRootPage(thisPageUrl) {
 }
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(details => {
-	if (isRootPage(details.url)) {
+	if (!isRootPage(details.url)) {
 		chrome.tabs.sendMessage(details.tabId, {
 			isArticle: true,
 		})
