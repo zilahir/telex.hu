@@ -13,7 +13,8 @@ body {
 		}
 
 		.telex-article-title,
-		.article_title-bottom-new {
+		.article_title-bottom-new,
+		h1 {
 			color: #ffffff;
 		}
 
@@ -21,6 +22,15 @@ body {
 		.article_body {
 			p {
 				color: #ffffff;
+			}
+		}
+
+		.article-html-content {
+			div {
+				blockquote {
+					background: rgba($color: $darkmode-background, $alpha: 1);
+					color: #ffffff;
+				}
 			}
 		}
 
@@ -80,6 +90,15 @@ body {
 	}
 
 	&.lightmode {
+		.article-html-content {
+			div {
+				blockquote {
+					background: rgba($color: $telex-main-color, $alpha: 1);
+					color: #ffffff;
+				}
+			}
+		}
+
 		.article {
 			a {
 				@include articleTitle;
