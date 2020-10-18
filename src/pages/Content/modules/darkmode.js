@@ -9,6 +9,9 @@ export function createDarkMode() {
 	const socialListWrapper = document.querySelector('.social-list-wrapper ul')
 	const darkModeLiElement = document.createElement('li')
 	const darkModeSpanElement = document.createElement('span')
+	chrome.storage.local.get('darkmode', value => {
+		store.dispatch(toggleDarkMode(value.darkmode))
+	})
 
 	darkModeLiElement.setAttribute('id', 'toggle-darkmode')
 	darkModeSpanElement.innerHTML = moonIcon
@@ -29,4 +32,9 @@ export function createDarkMode() {
 	})
 	darkModeLiElement.append(darkModeSpanElement)
 	socialListWrapper.append(darkModeLiElement)
+	if (store.getState().misc.darkmode) {
+		document.body.classList.add('darkmode')
+	} else {
+		document.body.classList.add('lightmode')
+	}
 }

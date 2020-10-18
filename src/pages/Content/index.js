@@ -1,10 +1,8 @@
 import { selectors } from './consts'
 import { isRootPage } from './modules/location'
 import { copyArticlesIntoGrid } from './modules/article'
-import { store } from '../../store/configureStore'
 import { createDarkMode } from './modules/darkmode'
 import { renderCovidApp } from './Covid'
-import { toggleDarkMode } from '../../store/actions/misc'
 import { fixHeader } from './modules/header'
 
 chrome.extension.sendMessage({}, () => {
@@ -12,9 +10,6 @@ chrome.extension.sendMessage({}, () => {
 		if (document.readyState === 'complete') {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
-				chrome.storage.local.get('darkmode', value => {
-					store.dispatch(toggleDarkMode(value.darkmode))
-				})
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
 						if (currentSelector.oldClass) {
@@ -51,11 +46,6 @@ chrome.extension.sendMessage({}, () => {
 
 				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
 				articlesAside.remove()
-			}
-			if (store.getState().misc.darkmode) {
-				document.body.classList.add('darkmode')
-			} else {
-				document.body.classList.add('lightmode')
 			}
 		}
 	}, 10)

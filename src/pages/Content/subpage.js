@@ -8,6 +8,7 @@ import { store } from '../../store/configureStore'
 import { setThisArticleId } from '../../store/actions/article'
 import { setAllRevisions, setApprovedRevisions } from '../../store/actions/reviews'
 import { hightLightText } from './modules/revision'
+import { createDarkMode } from './modules/darkmode'
 
 const { addRateContainer } = require('./modules/rate')
 
@@ -65,6 +66,9 @@ chrome.runtime.onMessage.addListener(message => {
 					}
 				})
 				addRateContainer()
+				setTimeout(() => {
+					createDarkMode()
+				}, 500)
 				const allImages = document.querySelectorAll('.article_body figure.image')
 				const galleryRoot = document.createElement('div')
 				galleryRoot.setAttribute('class', 'gallery')

@@ -46,14 +46,13 @@
 
 .article_body {
 	@include xl {
-
 		.article_tags {
 			margin: 20px 0;
 			padding-bottom: 0;
 
 			a {
 				text-decoration: none;
-				background: rgba($color: $telex-green, $alpha: 1.0);
+				background: rgba($color: $telex-green, $alpha: 1);
 				color: #fff;
 				text-decoration: none;
 				padding: 5px 8px;
@@ -80,9 +79,14 @@
 		.article-html-content {
 			@import './gallery';
 
+			figure {
+				margin: 50px 0;
+			}
+
 			div {
 				p {
-					line-height: 1.7;
+					line-height: 2;
+					font-size: 18px;
 				}
 
 				blockquote {

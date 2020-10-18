@@ -2,84 +2,96 @@
 @import '../mixins/articleTitle';
 
 body {
-  transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 
-  &.darkmode {
-    background: rgba($color: $darkmode-background, $alpha: 0.95);
+	&.darkmode {
+		background: rgba($color: $darkmode-background, $alpha: 0.95);
 
-    .header-new,
-    .footer-new {
-      background: rgba($color: $darkmode-background, $alpha: 1);
-    }
+		.header-new,
+		.footer-new {
+			background: rgba($color: $darkmode-background, $alpha: 1);
+		}
 
-    .article {
-      a {
-        @include articleTitle(#ffffff);
-      }
-    }
+		.telex-article-title,
+		.article_title-bottom-new {
+			color: #ffffff;
+		}
 
-    .title-with-border {
-      color: #ffffff;
-    }
+		.article-html-content,
+		.article_body {
+			p {
+				color: #ffffff;
+			}
+		}
 
-    .container-new {
-      .article_desc {
-        color: #ffffff;
-        line-height: 1.5;
-        font-size: 18px;
-      }
-    }
+		.article {
+			a {
+				@include articleTitle(#ffffff);
+			}
+		}
 
-    .above-nav-new {
-      &+nav {
-        background: rgba($color: $darkmode-background, $alpha: 1);
+		.title-with-border {
+			color: #ffffff;
+		}
 
-        .container {
-          &:after {
-            content: unset;
-          }
+		.container-new {
+			.article_desc {
+				color: #ffffff;
+				line-height: 1.5;
+				font-size: 18px;
+			}
+		}
 
-          .date-widget {
-            div {
-              color: #ffffff;
-            }
-          }
+		.above-nav-new {
+			& + nav {
+				background: rgba($color: $darkmode-background, $alpha: 1);
 
-          .weather-widget {
-            .weather-degree {
-              span {
-                &:first-of-type {
-                  color: #ffffff;
-                }
-              }
-            }
-          }
+				.container {
+					&:after {
+						content: unset;
+					}
 
-          .nav-list {
-            li {
-              a {
-                color: #ffffff;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+					.date-widget {
+						div {
+							color: #ffffff;
+						}
+					}
 
-  &.lightmode {
-    .article {
-      a {
-        @include articleTitle;
-      }
-    }
+					.weather-widget {
+						.weather-degree {
+							span {
+								&:first-of-type {
+									color: #ffffff;
+								}
+							}
+						}
+					}
 
-    .container-new {
-      .article_desc {
-        color: $telex-article-description-color;
-        line-height: 1.5;
-        font-size: 18px;
-      }
-    }
-  }
+					.nav-list {
+						li {
+							a {
+								color: #ffffff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.lightmode {
+		.article {
+			a {
+				@include articleTitle;
+			}
+		}
+
+		.container-new {
+			.article_desc {
+				color: $telex-article-description-color;
+				line-height: 1.5;
+				font-size: 18px;
+			}
+		}
+	}
 }
