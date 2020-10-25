@@ -18,9 +18,25 @@ body {
 			color: #ffffff;
 		}
 
+		.article_title-bottom-new {
+			svg {
+				g {
+					stroke: #ffffff;
+				}
+			}
+		}
+
+		.article_date {
+			color: #ffffff;
+		}
+
 		.article-html-content,
 		.article_body {
 			p {
+				color: #ffffff;
+			}
+
+			h2 {
 				color: #ffffff;
 			}
 		}
