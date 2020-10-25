@@ -34,6 +34,7 @@ chrome.runtime.onMessage.addListener(message => {
 				const thisArticleSlug = thisArticleUrl.split('/').find((item, index) => index > 4)
 				cloudFnPost(`${apiEndpoints.getArticleId}`, {
 					articleSlug: thisArticleSlug,
+					articleUrl: thisArticleUrl,
 				})
 					.then(articleResult => {
 						store.dispatch(setThisArticleId(articleResult.data.article.articleId))
