@@ -10,6 +10,7 @@ chrome.extension.sendMessage({}, () => {
 		if (document.readyState === 'complete') {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
+				console.debug('rootPage', true)
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
 						if (currentSelector.oldClass) {
@@ -26,9 +27,9 @@ chrome.extension.sendMessage({}, () => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
 					})
-					createDarkMode()
 					const covidAppContainer = document.createElement('div')
 					covidAppContainer.setAttribute('id', 'covid-app')
+					createDarkMode()
 					fixHeader()
 					const articleContentNew = document.querySelector('.middle-content-new')
 					articleContentNew.append(covidAppContainer)
