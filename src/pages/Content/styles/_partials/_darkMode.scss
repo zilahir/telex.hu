@@ -121,6 +121,20 @@ body {
 	}
 
 	&.lightmode {
+		.rate-container {
+			border: 2px solid $telex-main-color;
+			div {
+				svg {
+					g {
+						stroke: #ffffff;
+					}
+				}
+				&:hover {
+					background: $telex-main-color;
+				}
+			}
+		}
+
 		.article-html-content {
 			div {
 				blockquote {
