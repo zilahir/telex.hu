@@ -32,10 +32,10 @@ export function createDarkMode() {
 		})
 		darkModeLiElement.append(darkModeSpanElement)
 		socialListWrapper.append(darkModeLiElement)
-		if (store.getState().misc.darkmode) {
-			document.body.classList.add('darkmode')
-		} else {
-			document.body.classList.add('lightmode')
-		}
+	}
+	if (store.getState().misc.darkmode) {
+		document.body.classList.add('darkmode')
+	} else {
+		document.body.classList.add('lightmode')
 	}
 }

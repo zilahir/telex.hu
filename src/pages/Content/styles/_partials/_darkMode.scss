@@ -51,6 +51,13 @@ body {
 				color: #ffffff;
 			}
 
+			ul {
+				li {
+					color: #ffffff;
+					font-size: 18px;
+				}
+			}
+
 			h2 {
 				color: #ffffff;
 			}
@@ -67,7 +74,9 @@ body {
 
 		.article {
 			a {
-				@include articleTitle(#ffffff);
+				&:not(.green) {
+					@include articleTitle(#ffffff);
+				}
 			}
 		}
 
@@ -146,7 +155,9 @@ body {
 
 		.article {
 			a {
-				@include articleTitle;
+				&:not(.green) {
+					@include articleTitle;
+				}
 			}
 		}
 
