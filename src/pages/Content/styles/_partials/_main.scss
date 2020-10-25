@@ -1,6 +1,5 @@
 @import '../mixins/mediaQueries';
 @import '../mixins/articleTag';
-@import '../mixins/articleTitle';
 @import '../variables';
 
 .container-new {
@@ -21,16 +20,18 @@
 			}
 
 			.left-content-new,
-			.right-content-new {}
+			.right-content-new {
+			}
 		}
 
 		.right-content-new {
-			.article {}
+			.article {
+			}
 		}
 
 		.middle-content-new {
 			a {
-				font-size: 50px;
+				// font-size: 50px;
 				line-height: 60px;
 				margin-top: 20px;
 				font-weight: 700;
@@ -55,13 +56,12 @@
 				}
 
 				.article-anchor-new {
-					top: 30%
+					top: 30%;
 				}
 
 				.article_desc-new {
 					top: 50%;
 				}
-
 
 				position: relative;
 
@@ -107,7 +107,7 @@
 			}
 		}
 
-		&+.articles-block {
+		& + .articles-block {
 			column-gap: 50px;
 
 			.main-block {

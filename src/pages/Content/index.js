@@ -1,20 +1,15 @@
 import { selectors } from './consts'
 import { isRootPage } from './modules/location'
 import { copyArticlesIntoGrid } from './modules/article'
-import { store } from '../../store/configureStore'
 import { createDarkMode } from './modules/darkmode'
 import { renderCovidApp } from './Covid'
-import { toggleDarkMode } from '../../store/actions/misc'
 import { fixHeader } from './modules/header'
 
-chrome.extension.sendMessage({}, () => {
+chrome.runtime.onMessage.addListener(message => {
 	const readyStateCheckInterval = setInterval(() => {
-		if (document.readyState === 'complete') {
+		if (document.readyState === 'complete' && !message.isArticle) {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
-				chrome.storage.local.get('darkmode', value => {
-					store.dispatch(toggleDarkMode(value.darkmode))
-				})
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
 						if (currentSelector.oldClass) {
@@ -31,9 +26,9 @@ chrome.extension.sendMessage({}, () => {
 					new Array(2).fill().forEach((_, index) => {
 						copyArticlesIntoGrid(index)
 					})
-					createDarkMode()
 					const covidAppContainer = document.createElement('div')
 					covidAppContainer.setAttribute('id', 'covid-app')
+					createDarkMode()
 					fixHeader()
 					const articleContentNew = document.querySelector('.middle-content-new')
 					articleContentNew.append(covidAppContainer)
@@ -51,11 +46,6 @@ chrome.extension.sendMessage({}, () => {
 
 				document.querySelector('.articles-block .main-block div').append(articleAsideArticles)
 				articlesAside.remove()
-			}
-			if (store.getState().misc.darkmode) {
-				document.body.classList.add('darkmode')
-			} else {
-				document.body.classList.add('lightmode')
 			}
 		}
 	}, 10)

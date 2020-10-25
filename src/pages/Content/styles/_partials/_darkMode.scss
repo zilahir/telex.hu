@@ -2,84 +2,192 @@
 @import '../mixins/articleTitle';
 
 body {
-  transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 
-  &.darkmode {
-    background: rgba($color: $darkmode-background, $alpha: 0.95);
+	&.darkmode {
+		background: rgba($color: $darkmode-background, $alpha: 0.95);
 
-    .header-new,
-    .footer-new {
-      background: rgba($color: $darkmode-background, $alpha: 1);
-    }
+		.rate-container {
+			background: rgba($color: $darkmode-background, $alpha: 1);
+			border: 2px solid $telex-green;
+			div {
+				svg {
+					g {
+						stroke: #ffffff;
+					}
+				}
+				&:hover {
+					background: rgba($color: $telex-green, $alpha: 1);
+				}
+			}
+		}
 
-    .article {
-      a {
-        @include articleTitle(#ffffff);
-      }
-    }
+		.header-new,
+		.footer-new {
+			background: rgba($color: $darkmode-background, $alpha: 1);
+		}
 
-    .title-with-border {
-      color: #ffffff;
-    }
+		.telex-article-title,
+		.article_title-bottom-new,
+		h1 {
+			color: #ffffff;
+		}
 
-    .container-new {
-      .article_desc {
-        color: #ffffff;
-        line-height: 1.5;
-        font-size: 18px;
-      }
-    }
+		.article_title-bottom-new {
+			svg {
+				g {
+					stroke: #ffffff;
+				}
+			}
+		}
 
-    .above-nav-new {
-      &+nav {
-        background: rgba($color: $darkmode-background, $alpha: 1);
+		.article_date {
+			color: #ffffff;
+		}
 
-        .container {
-          &:after {
-            content: unset;
-          }
+		.article-html-content,
+		.article_body {
+			p {
+				color: #ffffff;
 
-          .date-widget {
-            div {
-              color: #ffffff;
-            }
-          }
+				span {
+					&.highlight {
+						background: rgba($color: #ff6961, $alpha: 1);
+					}
 
-          .weather-widget {
-            .weather-degree {
-              span {
-                &:first-of-type {
-                  color: #ffffff;
-                }
-              }
-            }
-          }
+					&.approved {
+					}
+				}
+			}
 
-          .nav-list {
-            li {
-              a {
-                color: #ffffff;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+			ul {
+				li {
+					color: #ffffff;
+					font-size: 18px;
+				}
+			}
 
-  &.lightmode {
-    .article {
-      a {
-        @include articleTitle;
-      }
-    }
+			h2 {
+				color: #ffffff;
+			}
+		}
 
-    .container-new {
-      .article_desc {
-        color: $telex-article-description-color;
-        line-height: 1.5;
-        font-size: 18px;
-      }
-    }
-  }
+		.article-html-content {
+			div {
+				blockquote {
+					background: rgba($color: $darkmode-background, $alpha: 1);
+					color: #ffffff;
+				}
+			}
+		}
+
+		.article {
+			a {
+				&:not(.green) {
+					@include articleTitle(#ffffff);
+				}
+			}
+		}
+
+		.title-with-border {
+			color: #ffffff;
+		}
+
+		.container-new {
+			.article_desc {
+				color: #ffffff;
+				line-height: 1.5;
+				font-size: 18px;
+			}
+		}
+
+		.above-nav-new {
+			& + nav {
+				background: rgba($color: $darkmode-background, $alpha: 1);
+
+				.container {
+					&:after {
+						content: unset;
+					}
+
+					.date-widget {
+						div {
+							color: #ffffff;
+						}
+					}
+
+					.weather-widget {
+						.weather-degree {
+							span {
+								&:first-of-type {
+									color: #ffffff;
+								}
+							}
+						}
+					}
+
+					.nav-list {
+						li {
+							a {
+								color: #ffffff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.lightmode {
+		.rate-container {
+			border: 2px solid $telex-main-color;
+			div {
+				svg {
+					g {
+						stroke: #ffffff;
+					}
+				}
+				&:hover {
+					background: $telex-main-color;
+				}
+			}
+		}
+
+		.article-html-content {
+			div {
+				blockquote {
+					background: rgba($color: $telex-main-color, $alpha: 1);
+					color: #ffffff;
+				}
+			}
+
+			p {
+				span {
+					&.highlight {
+						background: rgba($color: #ffb2ae, $alpha: 1);
+					}
+
+					&.approved {
+						background: rgba($color: #b4ecb4, $alpha: 1);
+					}
+				}
+			}
+		}
+
+		.article {
+			a {
+				&:not(.green) {
+					@include articleTitle;
+				}
+			}
+		}
+
+		.container-new {
+			.article_desc {
+				color: $telex-article-description-color;
+				line-height: 1.5;
+				font-size: 18px;
+			}
+		}
+	}
 }

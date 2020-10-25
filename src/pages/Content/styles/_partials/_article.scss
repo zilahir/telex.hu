@@ -46,14 +46,13 @@
 
 .article_body {
 	@include xl {
-
 		.article_tags {
 			margin: 20px 0;
 			padding-bottom: 0;
 
 			a {
 				text-decoration: none;
-				background: rgba($color: $telex-green, $alpha: 1.0);
+				background: rgba($color: $telex-green, $alpha: 1);
 				color: #fff;
 				text-decoration: none;
 				padding: 5px 8px;
@@ -64,13 +63,11 @@
 		p {
 			span {
 				&.highlight {
-					background: rgba($color: #ffb2ae, $alpha: 1);
 					padding: 3px;
 					border-radius: 3px;
 				}
 
 				&.approved {
-					background: rgba($color: #b4ecb4, $alpha: 1);
 					padding: 3px;
 					border-radius: 3px;
 				}
@@ -80,9 +77,14 @@
 		.article-html-content {
 			@import './gallery';
 
+			figure {
+				margin: 50px 0;
+			}
+
 			div {
 				p {
-					line-height: 1.7;
+					line-height: 2;
+					font-size: 18px;
 				}
 
 				blockquote {
@@ -90,9 +92,7 @@
 					font-weight: 500;
 					font-size: 110%;
 					letter-spacing: 0.4px;
-					background: rgba($color: $telex-main-color, $alpha: 1);
 					padding: 40px;
-					color: #ffffff;
 					border-top-right-radius: 10px;
 					border-bottom-right-radius: 10px;
 
@@ -104,6 +104,18 @@
 				h1 {
 					margin: 20px 0;
 				}
+			}
+
+			.embed-container {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.__v-oembed-error {
+				display: none;
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
 			}
 		}
 
@@ -123,7 +135,6 @@
 				width: 100%;
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
-				border: 2px solid $telex-main-color;
 
 				div {
 					padding: 10px;
@@ -133,7 +144,6 @@
 
 					&:hover {
 						transition: all 0.2s ease-in-out;
-						background: $telex-main-color;
 						cursor: pointer;
 
 						svg {

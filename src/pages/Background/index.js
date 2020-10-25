@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import '../../assets/img/icon-34.png'
 import '../../assets/img/icon-128.png'
 
@@ -5,7 +6,6 @@ import '../../assets/img/icon-128.png'
  * @param url
  */
 function isRootPage(thisPageUrl) {
-	// console.debug('thisPageUrl', thisPageUrl)
 	let url
 	if (thisPageUrl.includes('www')) {
 		url = thisPageUrl.split('www.')
@@ -31,5 +31,10 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(details => {
 		chrome.tabs.sendMessage(details.tabId, {
 			isArticle: true,
 		})
+	} else {
+		chrome.tabs.sendMessage(details.tabId, {
+			isArticle: false,
+		})
 	}
+	console.debug('details', details)
 })
