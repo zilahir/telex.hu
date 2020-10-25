@@ -20,7 +20,7 @@ function isRootPage(thisPageUrl) {
 			url = url[0]
 		}
 	}
-	if (url === 'telex.hu/') {
+	if (url === 'telex.hu/') {	
 		return true
 	}
 	return false
