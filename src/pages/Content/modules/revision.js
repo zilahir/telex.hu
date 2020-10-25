@@ -2,6 +2,7 @@
 
 // import { format } from 'date-fns'
 
+import { format } from 'date-fns'
 import { checkIcon, crossIcon } from '../../../icons'
 import { cloudFnPost } from '../../../requests'
 import { apiEndpoints } from '../../../requests/apiEndpoints'
@@ -33,7 +34,7 @@ function createRevisionBox({
 	revisionBox.setAttribute('class', 'revision-box')
 	const revisionTextInputField = document.createElement('input')
 	const revisionMeta = document.createElement('p')
-	revisionMeta.innerHTML = 'ma, 23:14'
+	revisionMeta.innerHTML = `ma, ${format(new Date(), 'HH:mm')}`
 	revisionBox.append(revisionTextInputField)
 	document.body.append(revisionBox)
 

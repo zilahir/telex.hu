@@ -49,6 +49,15 @@ body {
 		.article_body {
 			p {
 				color: #ffffff;
+
+				span {
+					&.highlight {
+						background: rgba($color: #ff6961, $alpha: 1);
+					}
+
+					&.approved {
+					}
+				}
 			}
 
 			ul {
@@ -149,6 +158,18 @@ body {
 				blockquote {
 					background: rgba($color: $telex-main-color, $alpha: 1);
 					color: #ffffff;
+				}
+			}
+
+			p {
+				span {
+					&.highlight {
+						background: rgba($color: #ffb2ae, $alpha: 1);
+					}
+
+					&.approved {
+						background: rgba($color: #b4ecb4, $alpha: 1);
+					}
 				}
 			}
 		}
