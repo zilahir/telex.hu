@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
-
-// import { format } from 'date-fns'
-
 import { format } from 'date-fns'
+
 import { checkIcon, crossIcon } from '../../../icons'
 import { cloudFnPost } from '../../../requests'
 import { apiEndpoints } from '../../../requests/apiEndpoints'
