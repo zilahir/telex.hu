@@ -23,6 +23,7 @@
     "fingerprintjs2": "^2.1.2",
     "mini-css-extract-plugin": "^0.11.3",
     "postcss-loader": "^4.0.3",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
@@ -31,7 +32,8 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-persist-chrome-storage": "^1.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rss-parser": "^3.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

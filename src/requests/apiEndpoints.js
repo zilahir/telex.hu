@@ -1,5 +1,6 @@
 const apiRoot = 'http://localhost:5000'
 const covidApiRoot = 'https://disease.sh/v3/covid-19'
+export const telexRoot = 'https://telex.hu'
 
 export const apiEndpoints = {
 	sendArticleAnalytics: `${apiRoot}/analytics`,

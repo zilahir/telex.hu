@@ -1,0 +1,16 @@
+.listItemContiner {
+	height: 40px;
+	display: flex;
+	background: rgba($color: #f9f9f9, $alpha: 1);
+	padding: 10px;
+	align-items: center;
+	border-bottom: 1px dotted #121212;
+
+	a {
+		text-decoration: none;
+		p {
+			font-size: 18px;
+			color: #121212;
+		}
+	}
+}
