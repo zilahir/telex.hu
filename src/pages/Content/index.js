@@ -5,12 +5,11 @@ import { createDarkMode } from './modules/darkmode'
 import { renderCovidApp } from './Covid'
 import { fixHeader } from './modules/header'
 
-chrome.extension.sendMessage({}, () => {
+chrome.runtime.onMessage.addListener(message => {
 	const readyStateCheckInterval = setInterval(() => {
-		if (document.readyState === 'complete') {
+		if (document.readyState === 'complete' && !message.isArticle) {
 			clearInterval(readyStateCheckInterval)
 			if (isRootPage(window.location.pathname)) {
-				console.debug('rootPage', true)
 				setTimeout(() => {
 					selectors.forEach(currentSelector => {
 						if (currentSelector.oldClass) {

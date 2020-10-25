@@ -36,4 +36,5 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(details => {
 			isArticle: false,
 		})
 	}
+	console.debug('details', details)
 })
