@@ -7,6 +7,21 @@ body {
 	&.darkmode {
 		background: rgba($color: $darkmode-background, $alpha: 0.95);
 
+		.rate-container {
+			background: rgba($color: $darkmode-background, $alpha: 1);
+			border: 2px solid $telex-green;
+			div {
+				svg {
+					g {
+						stroke: #ffffff;
+					}
+				}
+				&:hover {
+					background: rgba($color: $telex-green, $alpha: 1);
+				}
+			}
+		}
+
 		.header-new,
 		.footer-new {
 			background: rgba($color: $darkmode-background, $alpha: 1);
