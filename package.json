@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
+    "@material-ui/core": "^4.11.0",
     "@types/chrome": "0.0.104",
     "@types/react": "^16.9.26",
     "@zilahir/eslint-config": "^3.0.0",

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 
-import { telexRoot } from '../../../../requests/apiEndpoints'
 import { getRssFeed } from '../../utils/getRssFeed'
 import styles from './Rss.module.scss'
 
@@ -12,7 +11,7 @@ import styles from './Rss.module.scss'
 const RSS = () => {
 	const [telexRss, setTelexRss] = useState([])
 	const [isLoading, toggleLoading] = useState(true)
-	const [pagination, setPagination] = useState(5)
+	const [pagination, setPagination] = useState(7)
 	useEffect(() => {
 		getRssFeed().then(result => {
 			setTelexRss(result.items)
@@ -23,9 +22,17 @@ const RSS = () => {
 		<div className={styles.rssContianer}>
 			{
 				!isLoading && telexRss.slice(0, pagination).map(thisArticle => (
-					<p>
-						{thisArticle.title}
-					</p>
+					<div
+						className={styles.oneItem}
+						role="button"
+						tabIndex={-1}
+						onKeyDown={undefined}
+						onClick={() => window.location.replace(thisArticle.link)}
+					>
+						<p>
+							{thisArticle.title}
+						</p>
+					</div>
 				))
 			}
 		</div>
