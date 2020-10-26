@@ -20,7 +20,7 @@ function isRootPage(thisPageUrl) {
 			url = url[0]
 		}
 	}
-	if (url === 'telex.hu/') {	
+	if (url === 'telex.hu/') {
 		return true
 	}
 	return false
@@ -36,5 +36,4 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(details => {
 			isArticle: false,
 		})
 	}
-	console.debug('details', details)
 })
