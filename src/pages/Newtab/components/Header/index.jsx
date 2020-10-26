@@ -9,6 +9,7 @@ import { colors } from '../../utils/theme'
 import { cloudFnGet } from '../../../../requests'
 import { weatherApiRoot } from '../../../../requests/apiEndpoints'
 import { createWeather } from './Weather'
+import styles from './Header.modules.scss'
 
 const WEATHER_API_KEY = '04b9eb1d8c5a27b96f2a06c0f6997bdf'
 
@@ -46,7 +47,7 @@ const Header = () => {
 
 	useEffect(() => {
 		if (latitude && longitude) {
-			cloudFnGet(`${weatherApiRoot}?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`)
+			cloudFnGet(`${weatherApiRoot}?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric`)
 				.then(result => {
 					setWeatherData(result.data)
 				})
@@ -56,14 +57,23 @@ const Header = () => {
 		<div className={classes.root}>
 			<AppBar className={classes.appBar} position="static">
 				<Toolbar className={classes.container}>
-					<Typography className={classes.weatherText}>
-						{
-							`${weatherData && createWeather(weatherData.weather[0]).text}, ${weatherData.main.temp} °c`
-						}
-						{
-							weatherData && createWeather(weatherData.weather[0]).icon
-						}
-					</Typography>
+					{
+						weatherData && (
+							<Typography className={classes.weatherText}>
+								<span className={styles.cityName}>
+									{
+										`${weatherData.name},`
+									}
+								</span>
+								{
+									`${createWeather(weatherData.weather[0]).text}, ${weatherData.main.temp} °c`
+								}
+								{
+									createWeather(weatherData.weather[0]).icon
+								}
+							</Typography>
+						)
+					}
 				</Toolbar>
 			</AppBar>
 		</div>
