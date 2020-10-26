@@ -36,7 +36,9 @@
     "redux-persist": "^6.0.0",
     "redux-persist-chrome-storage": "^1.0.1",
     "redux-thunk": "^2.3.0",
-    "rss-parser": "^3.9.0"
+    "rss-parser": "^3.9.0",
+    "shortid": "^2.2.16",
+    "use-position": "0.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

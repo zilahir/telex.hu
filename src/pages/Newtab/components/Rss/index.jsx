@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Card from '@material-ui/core/Card'
 import OpenInNewIcon from '@material-ui/icons/OpenInNew'
-import { Button, CardContent, CardActions, Typography, makeStyles } from '@material-ui/core'
+import shortid from 'shortid'
+import { Button, CardContent, CardActions, Typography, makeStyles, Card, CardHeader, CardMedia } from '@material-ui/core'
 
 import { getRssFeed } from '../../utils/getRssFeed'
 import styles from './Rss.module.scss'
 import { colors } from '../../utils/theme'
+import { telexRoot } from '../../../../requests/apiEndpoints'
 
 /**
  * @author zilahir
@@ -15,10 +16,22 @@ import { colors } from '../../utils/theme'
 const useStyles = makeStyles({
 	root: {
 		backgroundColor: colors.pastelYellow,
+		display: 'flex',
+		flex: 1,
+		flexDirection: 'column',
 	},
 	articleTitle: {
 		color: colors.telexBlue,
 		fontSize: 22,
+	},
+	card: {
+		flex: 1,
+	},
+	footer: {
+	},
+	media: {
+		height: 0,
+		paddingTop: '56.25%', // 16:9
 	},
 })
 
@@ -29,6 +42,7 @@ const RSS = () => {
 	const classes = useStyles()
 	useEffect(() => {
 		getRssFeed().then(result => {
+			console.debug('result', result)
 			setTelexRss(result.items)
 			toggleLoading(false)
 		})
@@ -38,12 +52,18 @@ const RSS = () => {
 			{
 				!isLoading && telexRss.slice(0, pagination).map(thisArticle => (
 					<Card
+						key={`article-${shortid.generate()}`}
 						role="button"
 						tabIndex={-1}
 						onKeyDown={undefined}
 						className={classes.root}
 					>
-						<CardContent>
+						<CardMedia
+							className={classes.media}
+							image={`${telexRoot}/uploads/img-cache/1/6/0/3/4/1603470489-temp-eiacaf-20201023-600-400-zc.jpg`}
+							title={thisArticle.title}
+						/>
+						<CardContent className={classes.card}>
 							<Typography
 								className={classes.articleTitle}
 							>
