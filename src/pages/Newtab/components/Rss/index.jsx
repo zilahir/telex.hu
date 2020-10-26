@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import OpenInNewIcon from '@material-ui/icons/OpenInNew'
 import shortid from 'shortid'
-import { Button, CardContent, CardActions, Typography, makeStyles, Card, CardHeader, CardMedia } from '@material-ui/core'
+import { Button, CardContent, CardActions, Typography, makeStyles, Card, CardMedia } from '@material-ui/core'
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder'
+import { format } from 'date-fns'
 
 import { getRssFeed } from '../../utils/getRssFeed'
 import styles from './Rss.module.scss'
 import { colors } from '../../utils/theme'
-import { telexRoot } from '../../../../requests/apiEndpoints'
+import { apiEndpoints, telexRoot } from '../../../../requests/apiEndpoints'
+import { cloudFnGet } from '../../../../requests'
+import { getArticleSlug } from './utils/getArticleSlug'
+
 
 /**
  * @author zilahir
@@ -28,6 +33,9 @@ const useStyles = makeStyles({
 		flex: 1,
 	},
 	footer: {
+		fontSize: 12,
+		display: 'flex',
+		alignItems: 'center',
 	},
 	media: {
 		height: 0,
@@ -41,12 +49,29 @@ const RSS = () => {
 	const [pagination, setPagination] = useState(7)
 	const classes = useStyles()
 	useEffect(() => {
+		const promiseArray = []
+		const resultArray = []
 		getRssFeed().then(result => {
-			console.debug('result', result)
-			setTelexRss(result.items)
-			toggleLoading(false)
+			result.items.forEach(currentArticle => {
+				promiseArray.push(new Promise(resolve => {
+					cloudFnGet(`${apiEndpoints.telexArticles}/${getArticleSlug(currentArticle.link)}`)
+						.then(articleResult => {
+							resultArray.push({
+								currentArticle,
+								articleMeta: articleResult.data,
+							})
+							resolve()
+						})
+				}))
+			})
+			Promise.all(promiseArray).then(() => {
+				setTelexRss(resultArray)
+				console.debug('resultArray', resultArray)
+				toggleLoading(false)
+			})
 		})
 	}, [])
+
 	return (
 		<div className={styles.rssContianer}>
 			{
@@ -60,14 +85,18 @@ const RSS = () => {
 					>
 						<CardMedia
 							className={classes.media}
-							image={`${telexRoot}/uploads/img-cache/1/6/0/3/4/1603470489-temp-eiacaf-20201023-600-400-zc.jpg`}
-							title={thisArticle.title}
+							image={`${telexRoot}${thisArticle.articleMeta.facebookImage}`}
+							title={thisArticle.currentArticle.title}
 						/>
 						<CardContent className={classes.card}>
 							<Typography
 								className={classes.articleTitle}
 							>
-								{thisArticle.title}
+								{thisArticle.currentArticle.title}
+							</Typography>
+							<Typography className={classes.footer}>
+								<QueryBuilderIcon fontSize="small" />
+								{format(new Date(thisArticle.currentArticle.isoDate), 'yyyy-mm-dd HH:mm')}
 							</Typography>
 						</CardContent>
 						<CardActions>
@@ -75,7 +104,7 @@ const RSS = () => {
 								endIcon={<OpenInNewIcon />}
 								size="small"
 								onClick={
-									() => window.location.replace(thisArticle.link)
+									() => window.location.replace(thisArticle.currentArticle.link)
 								}
 							>
 								Megnyitás
