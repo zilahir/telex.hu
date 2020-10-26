@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from 'react'
+import Card from '@material-ui/core/Card'
+import OpenInNewIcon from '@material-ui/icons/OpenInNew'
+import { Button, CardContent, CardActions, Typography, makeStyles } from '@material-ui/core'
 
 import { getRssFeed } from '../../utils/getRssFeed'
 import styles from './Rss.module.scss'
+import { colors } from '../../utils/theme'
 
 /**
  * @author zilahir
  * @function RSS
  * */
 
+const useStyles = makeStyles({
+	root: {
+		backgroundColor: colors.pastelYellow,
+	},
+	articleTitle: {
+		color: colors.telexBlue,
+		fontSize: 22,
+	},
+})
+
 const RSS = () => {
 	const [telexRss, setTelexRss] = useState([])
 	const [isLoading, toggleLoading] = useState(true)
 	const [pagination, setPagination] = useState(7)
+	const classes = useStyles()
 	useEffect(() => {
 		getRssFeed().then(result => {
 			setTelexRss(result.items)
@@ -22,17 +37,31 @@ const RSS = () => {
 		<div className={styles.rssContianer}>
 			{
 				!isLoading && telexRss.slice(0, pagination).map(thisArticle => (
-					<div
-						className={styles.oneItem}
+					<Card
 						role="button"
 						tabIndex={-1}
 						onKeyDown={undefined}
-						onClick={() => window.location.replace(thisArticle.link)}
+						className={classes.root}
 					>
-						<p>
-							{thisArticle.title}
-						</p>
-					</div>
+						<CardContent>
+							<Typography
+								className={classes.articleTitle}
+							>
+								{thisArticle.title}
+							</Typography>
+						</CardContent>
+						<CardActions>
+							<Button
+								endIcon={<OpenInNewIcon />}
+								size="small"
+								onClick={
+									() => window.location.replace(thisArticle.link)
+								}
+							>
+								Megnyitás
+							</Button>
+						</CardActions>
+					</Card>
 				))
 			}
 		</div>

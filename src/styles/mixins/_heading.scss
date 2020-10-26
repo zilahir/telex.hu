@@ -1,0 +1,5 @@
+@mixin headings($type) {
+	h#{$type} {
+		@content;
+	}
+}
