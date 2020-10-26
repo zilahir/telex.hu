@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import OpenInNewIcon from '@material-ui/icons/OpenInNew'
 import shortid from 'shortid'
-import random from 'random'
 import { Button, CardContent, CardActions, Typography, makeStyles, Card, CardMedia } from '@material-ui/core'
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder'
 import { format } from 'date-fns'
 import StackGrid from 'react-stack-grid'
 
 import { getRssFeed } from '../../utils/getRssFeed'
-import styles from './Rss.module.scss'
 import { colors } from '../../utils/theme'
 import { apiEndpoints, telexRoot } from '../../../../requests/apiEndpoints'
 import { cloudFnGet } from '../../../../requests'
 import { getArticleSlug } from './utils/getArticleSlug'
-
 
 /**
  * @author zilahir
@@ -22,13 +19,13 @@ import { getArticleSlug } from './utils/getArticleSlug'
 
 const useStyles = makeStyles({
 	root: {
-		backgroundColor: colors.pastelYellow,
+		backgroundColor: colors.darkAlter,
 		display: 'flex',
 		flex: 1,
 		flexDirection: 'column',
 	},
 	articleTitle: {
-		color: colors.telexBlue,
+		color: '#f9f9f9',
 		fontSize: 22,
 	},
 	card: {
@@ -39,13 +36,19 @@ const useStyles = makeStyles({
 		display: 'flex',
 		alignItems: 'center',
 		marginTop: 10,
+		color: '#f9f9f9',
 	},
 	media: {
 		height: 0,
 		paddingTop: '56.25%', // 16:9
 	},
 	iconClass: {
+		color: '#f9f9f9',
 		marginRight: 10,
+	},
+	readMore: {
+		color: '#f9f9f9',
+		backgroundColor: colors.darkMain,
 	},
 })
 
@@ -110,6 +113,7 @@ const RSS = () => {
 						</CardContent>
 						<CardActions>
 							<Button
+								className={classes.readMore}
 								endIcon={<OpenInNewIcon />}
 								size="small"
 								onClick={

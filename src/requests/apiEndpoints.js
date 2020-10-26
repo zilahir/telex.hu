@@ -1,7 +1,7 @@
 const apiRoot = 'http://localhost:5000'
 const covidApiRoot = 'https://disease.sh/v3/covid-19'
 export const telexRoot = 'https://telex.hu'
-export const weatherApiRoot = 'https://api.openweathermap.org/data/2.5/weather?q='
+export const weatherApiRoot = 'https://api.openweathermap.org/data/2.5/weather'
 
 export const apiEndpoints = {
 	sendArticleAnalytics: `${apiRoot}/analytics`,
