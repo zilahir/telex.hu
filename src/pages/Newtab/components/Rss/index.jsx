@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import OpenInNewIcon from '@material-ui/icons/OpenInNew'
 import shortid from 'shortid'
+import random from 'random'
 import { Button, CardContent, CardActions, Typography, makeStyles, Card, CardMedia } from '@material-ui/core'
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder'
 import { format } from 'date-fns'
+import StackGrid from 'react-stack-grid'
 
 import { getRssFeed } from '../../utils/getRssFeed'
 import styles from './Rss.module.scss'
@@ -50,7 +52,7 @@ const useStyles = makeStyles({
 const RSS = () => {
 	const [telexRss, setTelexRss] = useState([])
 	const [isLoading, toggleLoading] = useState(true)
-	const [pagination, setPagination] = useState(7)
+	const [pagination, setPagination] = useState(15)
 	const classes = useStyles()
 	useEffect(() => {
 		const promiseArray = []
@@ -70,14 +72,17 @@ const RSS = () => {
 			})
 			Promise.all(promiseArray).then(() => {
 				setTelexRss(resultArray)
-				console.debug('resultArray', resultArray)
 				toggleLoading(false)
 			})
 		})
 	}, [])
 
 	return (
-		<div className={styles.rssContianer}>
+		<StackGrid
+			columnWidth={300}
+			gutterHeight={30}
+			gutterWidth={20}
+		>
 			{
 				!isLoading && telexRss.slice(0, pagination).map(thisArticle => (
 					<Card
@@ -117,7 +122,7 @@ const RSS = () => {
 					</Card>
 				))
 			}
-		</div>
+		</StackGrid>
 	)
 }
 

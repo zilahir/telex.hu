@@ -13,6 +13,7 @@ export const apiEndpoints = {
 	getArticleId: `${apiRoot}/article/get-article-id`,
 	getAllReviews: `${apiRoot}/reviews`,
 	telexArticles: `${telexRoot}/api/articles`,
+	resolveReview: `${apiRoot}/review`,
 }
 
 export const covidApi = {

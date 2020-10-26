@@ -16,6 +16,10 @@
 			display: flex;
 
 			li {
+				&.hidden {
+					display: none;
+				}
+
 				&:hover {
 					cursor: pointer;
 				}
