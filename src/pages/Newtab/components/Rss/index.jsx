@@ -36,10 +36,14 @@ const useStyles = makeStyles({
 		fontSize: 12,
 		display: 'flex',
 		alignItems: 'center',
+		marginTop: 10,
 	},
 	media: {
 		height: 0,
 		paddingTop: '56.25%', // 16:9
+	},
+	iconClass: {
+		marginRight: 10,
 	},
 })
 
@@ -95,7 +99,7 @@ const RSS = () => {
 								{thisArticle.currentArticle.title}
 							</Typography>
 							<Typography className={classes.footer}>
-								<QueryBuilderIcon fontSize="small" />
+								<QueryBuilderIcon className={classes.iconClass} fontSize="small" />
 								{format(new Date(thisArticle.currentArticle.isoDate), 'yyyy-mm-dd HH:mm')}
 							</Typography>
 						</CardContent>
