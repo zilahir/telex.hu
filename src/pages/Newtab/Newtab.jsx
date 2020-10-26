@@ -31,7 +31,6 @@ const Newtab = () => {
 								key={thisReview.article.articleId}
 								articleId={thisReview.article.articleId}
 								articleUrl={thisReview.article.articleUrl}
-								articleSlug={thisReview.article.articleSlug}
 								revision={thisReview.currentRevision}
 							/>
 						))

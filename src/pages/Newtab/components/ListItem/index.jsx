@@ -18,6 +18,7 @@ import { cloudFnPatch } from '../../../../requests'
 const ListItem = ({
 	articleId,
 	revision,
+	articleUrl,
 }) => {
 	/**
 	 *
@@ -66,6 +67,7 @@ const ListItem = ({
 					</li>
 					<li>
 						<Button
+							onClick={() => window.location.replace(`${telexRoot}${articleUrl}`)}
 							startIcon={<OpenInNewIcon htmlColor="#121212" />}
 						>
 							Cikk megnyitása
@@ -79,6 +81,7 @@ const ListItem = ({
 
 ListItem.propTypes = {
 	articleId: PropTypes.string.isRequired,
+	articleUrl: PropTypes.string.isRequired,
 	revision: PropTypes.objectOf(
 		PropTypes.any,
 	).isRequired,
