@@ -1,6 +1,6 @@
 # Telex.hu – Unoficcial Chrome Extension
 
->Public beta release date: 15th of October, 2020
+>PUBLIC BETA
 
 <p style="background-color: #c1c1c1; padding: 20px; border-left: 10px solid #444">
 🇭🇺  Disclaimer: Ez egy <i>unofficial</i> telex.hu chrome extension. A telex.hu-n megjelenő tartalmak a telex.hu tulajdona.
