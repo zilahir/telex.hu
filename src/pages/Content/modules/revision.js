@@ -33,6 +33,7 @@ function createRevisionBox({
 	const revisionMeta = document.createElement('p')
 	revisionMeta.innerHTML = `ma, ${format(new Date(), 'HH:mm')}`
 	revisionBox.append(revisionTextInputField)
+	console.debug('revisionBox', x, y)
 	document.body.append(revisionBox)
 
 	const actionButtonContainer = document.createElement('div')
@@ -46,7 +47,7 @@ function createRevisionBox({
 	actionButtonContainer.append(approveButton)
 	actionButtonContainer.append(revisionMeta)
 	revisionBox.append(actionButtonContainer)
-	revisionBox.style.left = `${x}px`
+	revisionBox.style.left = `${Math.abs(x)}px`
 	revisionBox.style.top = `${y}px`
 	cancelButton.addEventListener('click', () => {
 		revisionBox.remove()
