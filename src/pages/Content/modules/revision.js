@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
-
-// import { format } from 'date-fns'
-
 import { format } from 'date-fns'
+
 import { checkIcon, crossIcon } from '../../../icons'
 import { cloudFnPost } from '../../../requests'
 import { apiEndpoints } from '../../../requests/apiEndpoints'
@@ -60,7 +57,7 @@ function createRevisionBox({
 			articleId: store.getState().article.thisArticleId,
 			originalText: selectedText,
 			fixedText,
-			userId: '5f7d0674ff34216a731967bf',
+			userId: store.getState().fingerprint.fingerprint,
 			paragraphIndex,
 		}).then(() => {
 			revisionBox.remove()

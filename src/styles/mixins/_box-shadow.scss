@@ -1,0 +1,3 @@
+@mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $color: $default) {
+	box-shadow: $x-axis $y-axis $blur $color;
+}

@@ -1,28 +1,45 @@
-import React from 'react';
-import logo from '../../assets/img/logo.svg';
-import './Newtab.css';
-import './Newtab.scss';
+/* eslint-disable unicorn/filename-case */
+import React, { useEffect, useState } from 'react'
+
+import { cloudFnGet } from '../../requests'
+import { apiEndpoints } from '../../requests/apiEndpoints'
+import ListItem from './components/ListItem'
+import RSS, { } from './components/Rss'
+import styles from './Newtab.module.scss'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const Newtab = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Newtab/Newtab.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h6>The color of this paragraph is defined using SASS.</h6>
-      </header>
-    </div>
-  );
-};
+	const [reviewData, setReviewData] = useState([])
+	const [isLoading, toggleLoading] = useState(true)
+	useEffect(() => {
+		cloudFnGet(apiEndpoints.getAllReviews)
+			.then(result => {
+				setReviewData(result.data)
+				toggleLoading(false)
+			})
+	}, [])
+	return (
+		<>
+			<Header />
+			<div className={styles.rootContainer}>
+				<RSS />
+				<div className={styles.reviewsContainer}>
+					{
+						!isLoading && reviewData.map(thisReview => (
+							<ListItem
+								key={thisReview.article.articleId}
+								articleId={thisReview.article.articleId}
+								articleUrl={thisReview.article.articleUrl}
+								revision={thisReview.currentRevision}
+							/>
+						))
+					}
+				</div>
+			</div>
+			<Footer />
+		</>
+	)
+}
 
-export default Newtab;
+export default Newtab

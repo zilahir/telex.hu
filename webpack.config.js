@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
 const webpack = require('webpack')
 const path = require('path')
 const fileSystem = require('fs-extra')

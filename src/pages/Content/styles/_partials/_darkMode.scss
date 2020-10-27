@@ -52,7 +52,7 @@ body {
 
 				span {
 					&.highlight {
-						background: rgba($color: #ff6961, $alpha: 1);
+						background: rgba($color: $revisoin-red, $alpha: 1);
 					}
 
 					&.approved {
@@ -164,11 +164,11 @@ body {
 			p {
 				span {
 					&.highlight {
-						background: rgba($color: #ffb2ae, $alpha: 1);
+						background: rgba($color: $revision-red-alt, $alpha: 1);
 					}
 
 					&.approved {
-						background: rgba($color: #b4ecb4, $alpha: 1);
+						background: rgba($color: $revision-green, $alpha: 1);
 					}
 				}
 			}

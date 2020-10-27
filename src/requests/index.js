@@ -14,4 +14,6 @@ export const cloudFnGet = (path, parameters, options?) => cloudFnRequest('get', 
 
 export const cloudFnPost = (path, data, options?) => cloudFnRequest('post', path, undefined, data, options)
 
+export const cloudFnPatch = (path, data, options?) => cloudFnRequest('patch', path, undefined, data, options)
+
 export const cloudFnDelete = (path, parameters, options?) => cloudFnRequest('delete', path, parameters, undefined, options)

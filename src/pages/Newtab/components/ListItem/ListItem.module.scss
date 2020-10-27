@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins/paragraph';
+
+.listItemContiner {
+	display: flex;
+	background: rgba($color: #f9f9f9, $alpha: 1);
+	padding: 10px;
+	align-items: center;
+	border-bottom: 1px dotted #121212;
+
+	.iconsContainer {
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+
+			li {
+				&.hidden {
+					display: none;
+				}
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.reviewContainer {
+		flex: 1;
+		p {
+			@include paragraph(18px, #121212);
+			padding: 4px;
+			border-radius: 5px;
+			width: fit-content;
+			margin: 5px 0;
+
+			&.old {
+				background: rgba($color: $revision-red-alt, $alpha: 1);
+				text-decoration: line-through;
+			}
+
+			&.new {
+				background: rgba($color: $revision-green, $alpha: 1);
+			}
+		}
+	}
+}
