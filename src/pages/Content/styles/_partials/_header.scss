@@ -4,16 +4,14 @@
 header {
 	@include xl {
 		.above-nav-new {
-			padding-top: 0;
-			padding-bottom: 0;
+			padding-top: 0 !important; //sorry
+			padding-bottom: 0 !important; //sorry
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 
-
 			.aid {
 				flex: 1;
-				;
 				background-position: 50% 50%;
 				background-size: 25px;
 				background-repeat: no-repeat;

@@ -2,7 +2,7 @@ import { selectors } from './consts'
 import { isRootPage } from './modules/location'
 import { copyArticlesIntoGrid } from './modules/article'
 import { createDarkMode } from './modules/darkmode'
-import { renderCovidApp } from './Covid'
+import { renderReactApp } from './Covid'
 import { fixHeader } from './modules/header'
 
 chrome.runtime.onMessage.addListener(message => {
@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(message => {
 					newArticleContent.classList.add('article_desc-new')
 					newArticleImageContainer.append(newArticleContent)
 					newArticleImageContainer.append(newArticleAnchor[1])
-					renderCovidApp()
+					renderReactApp()
 				}, 1000)
 				const articlesAside = document.querySelector('.articles-block aside')
 				const articleAsideArticles = articlesAside.querySelector('ul')

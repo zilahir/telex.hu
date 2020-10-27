@@ -4,4 +4,4 @@ import { render } from 'react-dom'
 import Newtab from './Newtab'
 import './index.css'
 
-render(<Newtab />, window.document.querySelector('#app-container'));
+render(<Newtab />, window.document.querySelector('#app-container'))

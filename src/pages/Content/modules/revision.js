@@ -46,7 +46,7 @@ function createRevisionBox({
 	actionButtonContainer.append(approveButton)
 	actionButtonContainer.append(revisionMeta)
 	revisionBox.append(actionButtonContainer)
-	revisionBox.style.left = `${x}px`
+	revisionBox.style.left = `${Math.abs(x)}px`
 	revisionBox.style.top = `${y}px`
 	cancelButton.addEventListener('click', () => {
 		revisionBox.remove()

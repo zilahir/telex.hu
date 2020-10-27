@@ -1,19 +1,28 @@
 import React from 'react'
-import { AppBar, Toolbar, makeStyles, IconButton } from '@material-ui/core'
+import { AppBar, Toolbar, makeStyles, IconButton, Typography } from '@material-ui/core'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LanguageIcon from '@material-ui/icons/Language'
 
 import { colors } from '../../utils/theme'
+import styles from './Footer.module.scss'
 
 const useStyles = makeStyles({
 	footer: {
 		top: 'auto',
 		bottom: 0,
-		alignItems: 'flex-end',
 		backgroundColor: colors.darkMain,
+		flex: 1,
+		flexDirection: 'row',
 	},
 	root: {
 		flexGrow: 1,
+	},
+	icons: {
+		justifyContent: 'flex-end',
+		flex: 1,
+	},
+	meta: {
+		flex: 1,
 	},
 })
 
@@ -30,7 +39,15 @@ const Footer = () => {
 				position="fixed"
 				className={classes.footer}
 			>
-				<Toolbar>
+				<Toolbar className={classes.meta}>
+					<Typography>
+						telex.hu – chrome extension
+					</Typography>
+					<Typography>
+						<a className={styles.issues} href="https://github.com/zilahir/telex.hu/issues">hibajegyek</a>
+					</Typography>
+				</Toolbar>
+				<Toolbar className={classes.icons}>
 					<IconButton
 						onClick={() => window.location.replace('https://richardzilahi.hu')}
 					>

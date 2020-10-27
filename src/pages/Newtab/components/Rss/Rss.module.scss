@@ -1,22 +1,2 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins/box-shadow';
-
-.rssContianer {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	grid-gap: 1rem;
-	height: auto;
-
-	.oneItem {
-		@include box-shadow(0, 0, 20px, rgba($color: #000000, $alpha: 0.5));
-		padding: 10px;
-		display: flex;
-		align-items: center;
-		margin: 10px 0;
-		background: rgba($color: $telex-main-color, $alpha: 1);
-		color: #ffffff;
-		p {
-			font-size: 22px;
-		}
-	}
-}

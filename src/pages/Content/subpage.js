@@ -71,7 +71,7 @@ chrome.runtime.onMessage.addListener(message => {
 				setTimeout(() => {
 					fixHeader()
 					createDarkMode()
-				}, 500)
+				}, 1000)
 				const allImages = document.querySelectorAll('.article_body figure.image')
 				const galleryRoot = document.createElement('div')
 				galleryRoot.setAttribute('class', 'gallery')
