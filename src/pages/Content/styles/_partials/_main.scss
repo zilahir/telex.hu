@@ -57,6 +57,8 @@
 
 				.article-anchor-new {
 					top: 30%;
+					padding: 10px 8px;
+					line-height: initial;
 				}
 
 				.article_desc-new {
@@ -72,7 +74,11 @@
 					top: 0;
 					width: 100%;
 					height: 100%;
-					background: rgba($color: $telex-main-color, $alpha: 0.6);
+					background: linear-gradient(
+						0deg,
+						rgba(38, 38, 38, 1) 0%,
+						rgba(0, 0, 0, 0.8) 60%
+					);
 				}
 
 				.article_cat {
