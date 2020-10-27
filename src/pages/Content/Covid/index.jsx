@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import Root from './root'
 import styles from './root.module.scss'
 
-export function renderCovidApp() {
+export function renderReactApp() {
 	render(
 		<div className={styles.rootContainer}>
 			<Root />
