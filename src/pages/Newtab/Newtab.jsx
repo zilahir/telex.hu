@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 const Newtab = () => {
 	const [reviewData, setReviewData] = useState([])
 	const [isLoading, toggleLoading] = useState(true)
+	const hide = true
 	useEffect(() => {
 		cloudFnGet(apiEndpoints.getAllReviews)
 			.then(result => {
@@ -26,7 +27,7 @@ const Newtab = () => {
 				<RSS />
 				<div className={styles.reviewsContainer}>
 					{
-						!isLoading && reviewData.map(thisReview => (
+						!hide && !isLoading && reviewData.map(thisReview => (
 							<ListItem
 								key={thisReview.article.articleId}
 								articleId={thisReview.article.articleId}
