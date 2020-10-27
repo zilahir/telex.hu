@@ -33,7 +33,6 @@ function createRevisionBox({
 	const revisionMeta = document.createElement('p')
 	revisionMeta.innerHTML = `ma, ${format(new Date(), 'HH:mm')}`
 	revisionBox.append(revisionTextInputField)
-	console.debug('revisionBox', x, y)
 	document.body.append(revisionBox)
 
 	const actionButtonContainer = document.createElement('div')
