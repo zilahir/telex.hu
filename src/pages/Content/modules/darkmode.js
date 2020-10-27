@@ -36,10 +36,11 @@ export function createDarkMode() {
 		socialListWrapper.append(darkModeLiElement)
 	}
 	setTimeout(() => {
+		console.debug('store', store.getState())
 		if (store.getState().misc.darkmode) {
 			document.body.classList.add('darkmode')
 		} else {
 			document.body.classList.add('lightmode')
 		}
-	}, 200)
+	}, 10)
 }

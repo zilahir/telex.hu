@@ -55,7 +55,9 @@ const useStyles = makeStyles({
 const RSS = () => {
 	const [telexRss, setTelexRss] = useState([])
 	const [isLoading, toggleLoading] = useState(true)
-	const [pagination, setPagination] = useState(15)
+	// const [pagination, setPagination] = useState(15)
+	const pagination = 15
+
 	const classes = useStyles()
 	useEffect(() => {
 		const promiseArray = []
