@@ -1,6 +1,5 @@
 /* eslint-disable unicorn/filename-case */
 import React, { useEffect, useState } from 'react'
-import { AppBar } from '@material-ui/core'
 
 import { cloudFnGet } from '../../requests'
 import { apiEndpoints } from '../../requests/apiEndpoints'
@@ -8,6 +7,7 @@ import ListItem from './components/ListItem'
 import RSS, { } from './components/Rss'
 import styles from './Newtab.module.scss'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 const Newtab = () => {
 	const [reviewData, setReviewData] = useState([])
@@ -37,6 +37,7 @@ const Newtab = () => {
 					}
 				</div>
 			</div>
+			<Footer />
 		</>
 	)
 }
