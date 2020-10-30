@@ -13,11 +13,8 @@
 	"permissions": [
 		"https://*.telex.hu/",
 		"https://*.telex.hu/*",
-		"tabs",
 		"webNavigation",
-		"history",
-		"storage",
-		"notifications"
+		"storage"
 	],
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"
