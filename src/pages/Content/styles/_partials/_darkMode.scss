@@ -7,6 +7,17 @@ body {
 	&.darkmode {
 		background: rgba($color: $darkmode-background, $alpha: 0.95);
 
+		.cikk-side {
+			.article {
+				.article_desc {
+					color: #ffffff;
+				}
+				.article_cat {
+					background: none;
+				}
+			}
+		}
+
 		.rate-container {
 			background: rgba($color: $darkmode-background, $alpha: 1);
 			border: 2px solid $telex-green;
@@ -94,7 +105,7 @@ body {
 		}
 
 		.container-new {
-			.article_desc {
+			.article {
 				color: #ffffff;
 				line-height: 1.5;
 				font-size: 18px;
