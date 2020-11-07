@@ -1,7 +1,7 @@
 {
 	"name": "telex.hu – extension",
 	"options_page": "options.html",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"background": {
 		"scripts": ["background.bundle.js"],
 		"persistent": false
