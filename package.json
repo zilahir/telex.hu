@@ -1,6 +1,6 @@
 {
 	"name": "telex.hu",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "Telex.hu – Unofficial chrome extension. Darkmode, Revisions, Rating, etc. Public beta.",
 	"license": "MIT",
 	"repository": {
